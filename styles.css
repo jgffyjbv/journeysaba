@@ -1108,3 +1108,21 @@ a[href="services.html"].text-accent { padding-top: 10px; padding-bottom: 10px; }
 
 /* flip controls: wrap and tighten on small screens so the row never overflows */
 #storybook div:has(> .fb-next) { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
+
+/* ===== mobile fixes round 2 (client: storybook middle line + hero crop) ===== */
+
+/* storybook: the book's center spine only makes sense between two side-by-side
+   pages. On mobile the pages stack, so hide the spine (it was slicing the art). */
+@media (max-width: 640px) {
+  .book-spine { display: none !important; }
+  .fb-spread.fb-active { gap: 20px; }
+}
+
+/* hero: a 2:1 landscape photo in a 95vh portrait hero crops to one face on phones.
+   On mobile, reveal the whole scene — image at natural width, text on the purple below. */
+@media (max-width: 768px) {
+  section.min-h-\[95vh\] { min-height: 0 !important; }
+  section.min-h-\[95vh\] > .absolute.inset-0 { position: relative !important; }
+  section.min-h-\[95vh\] > .absolute.inset-0 > img { position: relative !important; height: auto !important; }
+  section.min-h-\[95vh\] > .relative.z-10 { padding-top: 1.75rem !important; padding-bottom: 2.5rem !important; }
+}
