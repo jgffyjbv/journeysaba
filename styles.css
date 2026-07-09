@@ -1076,3 +1076,35 @@ div.absolute.rounded-full.pointer-events-none:nth-of-type(3n){animation-delay:2.
 @keyframes lsbPulse{0%{box-shadow:0 0 0 0 rgba(124,58,237,.35)}70%{box-shadow:0 0 0 12px rgba(124,58,237,0)}100%{box-shadow:0 0 0 0 rgba(124,58,237,0)}}
 #lsb-chat{animation:lsbPulse 2.4s ease-out infinite}
 @media (prefers-reduced-motion: reduce){#lsb-chat{animation:none}}
+
+/* ===== audit fixes (Jul 2026): mobile, tap targets, overlap ===== */
+
+/* baseline: no image may ever exceed its container */
+img { max-width: 100%; height: auto; }
+
+/* storybook: stack the two book pages under 640px so each page stays readable */
+@media (max-width: 640px) {
+  .fb-spread.fb-active { grid-template-columns: 1fr !important; }
+  /* hero: soften the zoom-in crop on small screens — calmer, more of the scene visible */
+  #app > div > section.min-h-\[95vh\] { min-height: 72vh !important; }
+}
+
+/* tap targets: storybook spread dots get a 44px hit area (visual dot stays small via inner sizing) */
+button[aria-label^="Go to spread"] {
+  min-width: 24px; min-height: 24px;
+  padding: 10px; margin: -4px;
+  background-clip: content-box;
+  box-sizing: content-box;
+}
+
+/* links that measured under 44px tall: give them comfortable padding without moving layout */
+footer a { display: inline-block; padding-top: 6px; padding-bottom: 6px; }
+a[href="services.html"].text-accent { padding-top: 10px; padding-bottom: 10px; }
+
+/* the fixed chat bubble was covering the footer's legal links on phones — give the footer clearance */
+@media (max-width: 767px) {
+  footer > div { padding-bottom: 96px !important; }
+}
+
+/* flip controls: wrap and tighten on small screens so the row never overflows */
+#storybook div:has(> .fb-next) { flex-wrap: wrap; justify-content: center; row-gap: 10px; }
