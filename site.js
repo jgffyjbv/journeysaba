@@ -1,6 +1,37 @@
 // Journeys ABA — static site interactivity (vanilla JS, no dependencies)
+document.documentElement.classList.add('js');
 (function () {
   'use strict';
+
+  /* ---------- Scroll-reveal (replays the original fade-up-on-scroll animation) ----------
+     Deliberately scroll-listener-based (not IntersectionObserver): if reveal ever fails,
+     content must still appear — a rect check on scroll cannot silently break. */
+  var pending = [].slice.call(document.querySelectorAll('.rv'));
+  var ticking = false;
+  function revealCheck() {
+    ticking = false;
+    if (!pending.length) return;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var batch = 0;
+    pending = pending.filter(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.94 && r.bottom > 0) {
+        (function (e, d) { setTimeout(function () { e.classList.add('rv-in'); }, d); })(el, 110 + (batch % 6) * 90);
+        batch++;
+        return false;
+      }
+      return true;
+    });
+  }
+  function onScroll() {
+    if (!ticking) { ticking = true; (window.requestAnimationFrame || setTimeout)(revealCheck); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  revealCheck();
+  setTimeout(revealCheck, 400); // fonts/images may shift layout after first paint
+  // absolute safety net: anything still pending after 12s becomes visible no matter what
+  setTimeout(function () { pending.forEach(function (el) { el.classList.add('rv-in'); }); pending = []; }, 12000);
 
   /* ---------- Mobile menu ---------- */
   var menuBtn = document.querySelector('button[aria-label="Toggle menu"]');

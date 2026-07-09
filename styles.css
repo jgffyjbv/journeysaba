@@ -1060,3 +1060,19 @@ html { scroll-behavior: smooth; }
   #claude-agent-glow-border-inner { animation: auto ease 0s 1 normal none running none; }
 }
 
+
+html.js .rv{opacity:0;transform:translateY(24px);transition:opacity .55s ease-out,transform .55s ease-out}
+html.js .rv.rv-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){html.js .rv{opacity:1;transform:none;transition:none}}
+@keyframes lsbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-11px) scale(1.12)}}
+div.absolute.rounded-full.pointer-events-none{animation:lsbFloat 5.2s ease-in-out infinite}
+div.absolute.rounded-full.pointer-events-none:nth-of-type(2n){animation-delay:1.3s;animation-duration:6.1s}
+div.absolute.rounded-full.pointer-events-none:nth-of-type(3n){animation-delay:2.2s;animation-duration:4.6s}
+@keyframes lsbWig{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.wig{animation:lsbWig 3.6s ease-in-out infinite;display:inline-block}
+@keyframes lsbPls{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.pls{animation:lsbPls 2.8s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){div.absolute.rounded-full.pointer-events-none,.wig,.pls{animation:none}}
+@keyframes lsbPulse{0%{box-shadow:0 0 0 0 rgba(124,58,237,.35)}70%{box-shadow:0 0 0 12px rgba(124,58,237,0)}100%{box-shadow:0 0 0 0 rgba(124,58,237,0)}}
+#lsb-chat{animation:lsbPulse 2.4s ease-out infinite}
+@media (prefers-reduced-motion: reduce){#lsb-chat{animation:none}}
