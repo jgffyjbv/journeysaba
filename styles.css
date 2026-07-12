@@ -1126,3 +1126,6 @@ a[href="services.html"].text-accent { padding-top: 10px; padding-bottom: 10px; }
   section.min-h-\[95vh\] > .absolute.inset-0 > img { position: relative !important; height: auto !important; }
   section.min-h-\[95vh\] > .relative.z-10 { padding-top: 1.75rem !important; padding-bottom: 2.5rem !important; }
 }
+
+/* anchor targets must land below the h-32 (128px) sticky header */
+[id^="guide-"] { scroll-margin-top: 9rem; }
