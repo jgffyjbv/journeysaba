@@ -1129,3 +1129,10 @@ a[href="services.html"].text-accent { padding-top: 10px; padding-bottom: 10px; }
 
 /* anchor targets must land below the h-32 (128px) sticky header */
 [id^="guide-"] { scroll-margin-top: 9rem; }
+
+/* Footer polish (Jul 15): tagline blended into the purple footer + breathing room */
+footer .ftr-tag { border-bottom: 1px solid rgba(255,255,255,.14); padding-top: 18px; padding-bottom: 18px; }
+footer .ftr-tag p { color: rgba(255,255,255,.82) !important; font-weight: 600 !important; letter-spacing: .05em; }
+footer .ftr-tag svg { color: hsl(41 100% 55%); fill: hsl(41 100% 55%); }
+footer .ftr-main { padding-top: 48px; }
+footer a:hover { color: hsl(41 100% 62%) !important; }
