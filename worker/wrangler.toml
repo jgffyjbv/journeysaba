@@ -1,0 +1,7 @@
+name = "journeysaba-chat"
+main = "chat.js"
+compatibility_date = "2026-01-01"
+
+[[kv_namespaces]]
+binding = "RATE"
+id = "39bbf187e7d84025a5c5ea2b939871d6"

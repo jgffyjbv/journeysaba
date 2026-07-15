@@ -94,12 +94,81 @@ document.documentElement.classList.add('js');
     });
   });
 
-  /* ---------- Chat bubble -> quick contact popup (original was an AI chatbot on Airo's backend) ---------- */
+  /* ---------- Chat bubble -> AI assistant (OpenAI via Cloudflare Worker proxy) ----------
+     The popup markup in the HTML is the old quick-contact card; we rebuild it into a
+     live chat here so all pages get the assistant from this one code path. */
   var chat = document.getElementById('lsb-chat');
   if (chat) {
     var pop = document.getElementById('lsb-chat-pop');
+    var CHAT_API = 'https://journeysaba-chat.avrumy95.workers.dev';
+    var history = []; // {role, content} pairs sent to the assistant
+    var busy = false;
+
+    pop.style.width = 'min(340px, calc(100vw - 32px))';
+    pop.style.padding = '0';
+    pop.style.overflow = 'hidden';
+    pop.innerHTML =
+      '<div style="background:#4C1D95;color:#fff;padding:14px 18px;">' +
+        '<div style="font-family:Nunito,sans-serif;font-weight:800;font-size:16px;">Journeys ABA Assistant</div>' +
+        '<div style="font-size:12px;opacity:.85;">Ask about ABA therapy, insurance, or getting started</div>' +
+      '</div>' +
+      '<div id="lsb-chat-msgs" style="height:300px;overflow-y:auto;padding:14px;background:#FAF9FF;display:flex;flex-direction:column;gap:8px;"></div>' +
+      '<form id="lsb-chat-form" style="display:flex;gap:8px;padding:10px;border-top:1px solid #EDE9FE;background:#fff;">' +
+        '<input id="lsb-chat-in" type="text" placeholder="Type your question&hellip;" autocomplete="off" maxlength="600" ' +
+          'style="flex:1;border:1.5px solid #DDD6FE;border-radius:10px;padding:9px 12px;font-family:\'Open Sans\',sans-serif;font-size:14px;outline-color:#7C3AED;" />' +
+        '<button type="submit" aria-label="Send" style="background:#7C3AED;color:#fff;border:0;border-radius:10px;width:42px;cursor:pointer;font-size:16px;">&#10148;</button>' +
+      '</form>' +
+      '<div style="padding:7px 12px;background:#fff;border-top:1px solid #F3F0FF;text-align:center;font-size:12px;">' +
+        'Prefer to talk? <a href="tel:+17323052619" style="color:#7C3AED;font-weight:700;text-decoration:none;">(732) 305-2619</a>' +
+      '</div>';
+
+    var msgsEl = pop.querySelector('#lsb-chat-msgs');
+    var formEl = pop.querySelector('#lsb-chat-form');
+    var inEl = pop.querySelector('#lsb-chat-in');
+
+    function addMsg(text, who) {
+      var b = document.createElement('div');
+      b.style.cssText = who === 'user'
+        ? 'align-self:flex-end;background:#7C3AED;color:#fff;border-radius:14px 14px 4px 14px;padding:9px 13px;max-width:85%;font-size:14px;line-height:1.45;font-family:\'Open Sans\',sans-serif;white-space:pre-wrap;'
+        : 'align-self:flex-start;background:#fff;color:#333;border:1px solid #EDE9FE;border-radius:14px 14px 14px 4px;padding:9px 13px;max-width:85%;font-size:14px;line-height:1.45;font-family:\'Open Sans\',sans-serif;white-space:pre-wrap;';
+      b.textContent = text;
+      msgsEl.appendChild(b);
+      msgsEl.scrollTop = msgsEl.scrollHeight;
+      return b;
+    }
+
+    addMsg('Hi! 👋 I’m the Journeys ABA assistant. Ask me anything about ABA therapy, our services, insurance, or how to get started!', 'bot');
+
+    formEl.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var q = inEl.value.replace(/^\s+|\s+$/g, '');
+      if (!q || busy) return;
+      inEl.value = '';
+      addMsg(q, 'user');
+      history.push({ role: 'user', content: q });
+      busy = true;
+      var typing = addMsg('• • •', 'bot');
+      typing.style.opacity = '.55';
+      fetch(CHAT_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history.slice(-10) }),
+      }).then(function (r) { return r.json(); }).then(function (j) {
+        var reply = (j && j.reply) || 'I’m having trouble right now — please call us at (732) 305-2619!';
+        typing.style.opacity = '1';
+        typing.textContent = reply;
+        history.push({ role: 'assistant', content: reply });
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+      }).catch(function () {
+        typing.style.opacity = '1';
+        typing.textContent = 'I’m having trouble connecting — please call us at (732) 305-2619 or use the form on our Contact page!';
+      }).then(function () { busy = false; });
+    });
+
     chat.addEventListener('click', function () {
-      pop.style.display = pop.style.display === 'none' ? 'block' : 'none';
+      var open = pop.style.display === 'none';
+      pop.style.display = open ? 'block' : 'none';
+      if (open) inEl.focus();
     });
   }
 
