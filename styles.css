@@ -1020,45 +1020,6 @@ html { scroll-behavior: smooth; }
 .\[\&_tr\]\:border-b tr { border-bottom-width: 1px; }
 [data-slot="card-content"] .\[\[data-slot\=card-content\]_\&\]\:bg-transparent { background-color: transparent; }
 [data-slot="popover-content"] .\[\[data-slot\=popover-content\]_\&\]\:bg-transparent { background-color: transparent; }
-[data-airo-dev-tools] { font-family: system-ui, sans-serif; --color-primary: #6b46c1; --color-primary-hover: #5a32b0; --color-primary-light: #f5f3ff; --color-interactive: #8b5cf6; --color-interactive-hover: #2563eb; --color-interactive-bg: #eff6ff; --color-interactive-bg-hover: #dbeafe; --color-interactive-border: #bfdbfe; --color-interactive-border-hover: #93c5fd; --color-success: #059669; --color-success-bg: #ecfdf5; --color-success-bg-hover: #d1fae5; --color-success-border: #a7f3d0; --color-success-border-hover: #6ee7b7; --color-error: #dc2626; --color-error-gradient-start: #ef4444; --color-error-gradient-end: #dc2626; --color-warning: #d97706; --color-surface: #ffffff; --color-surface-hover: #f9fafb; --color-surface-overlay: rgba(0, 0, 0, 0.15); --color-border: #d1d5db; --color-border-light: #e5e7eb; --color-text-primary: #111111; --color-text-secondary: #374151; --color-text-tertiary: #6b7280; --color-text-muted: #9ca3af; --color-accent-purple: #8b5cf6; --color-accent-purple-bg: #f5f3ff; --color-accent-purple-bg-hover: #ede9fe; --color-accent-purple-border: #ddd6fe; --color-accent-purple-border-hover: #c4b5fd; --color-accent-pink: #db2777; --color-selection-outline: #10b981; --color-black: #111827; --color-gray-600: #4b5563; --color-blue-600: #2563eb; --color-purple-600: #9333ea; --color-green-600: #16a34a; --color-red-600: #dc2626; --color-orange-600: #d97706; --color-pink-600: #db2777; --color-gray-100: #f3f4f6; --color-blue-100: #dbeafe; --color-purple-100: #e9d5ff; --color-green-100: #dcfce7; --color-red-100: #fee2e2; --color-yellow-100: #fef3c7; --color-pink-100: #fce7f3; --font-heading: system-ui, sans-serif !important; }
-.airo-editable-field { background-color: color-mix(in srgb, currentcolor 14%, transparent); border-bottom: 1px dashed; border-radius: 2px; padding: 0px 2px; cursor: text; transition: background-color 120ms; }
-.airo-editable-field:hover { background-color: color-mix(in srgb, currentcolor 24%, transparent); }
-.airo-editable-field::after { content: "✎"; font-size: 0.75em; margin-left: 3px; color: currentcolor; opacity: 0.65; user-select: none; }
-.airo-editable-field:focus { outline: currentcolor solid 2px; outline-offset: 1px; background-color: color-mix(in srgb, currentcolor 24%, transparent); }
-.airo-editable-field:focus::after { content: ""; }
-.airo-editable-field-invalid { background-color: color-mix(in srgb, rgb(220, 38, 38) 28%, transparent) !important; border-bottom-color: rgb(220, 38, 38) !important; }
-.airo-editable-field-select { padding: 0px; }
-.airo-editable-field-select::after { content: ""; }
-.airo-state-select { font: inherit; color: currentcolor; background-color: transparent; border-width: medium medium 1px; border-style: none none dashed; border-color: currentcolor; border-image: initial; padding: 0px 18px 0px 2px; margin: 0px; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' fill='none' stroke='currentColor' stroke-width='1.5'/></svg>"); background-repeat: no-repeat; background-position: right 2px center; }
-.airo-state-select:focus { outline: currentcolor solid 2px; outline-offset: 1px; }
-.airo-state-select option { color: rgb(17, 17, 17); background-color: rgb(255, 255, 255); }
-.airo-section-toggle { display: inline-flex; align-items: center; gap: 4px; margin: 0px 6px; padding: 1px 8px; font-family: system-ui, sans-serif; font-size: 0.7rem; line-height: 1.4; color: rgb(90, 50, 176); background-color: rgb(245, 243, 255); border: 1px solid rgb(221, 214, 254); border-radius: 9999px; cursor: pointer; }
-.airo-section-toggle[aria-pressed="true"] { color: rgb(255, 255, 255); background-color: rgb(139, 92, 246); border-color: rgb(139, 92, 246); }
-.airo-section-toggle:hover { border-color: rgb(196, 181, 253); }
-.airo-tooltip-root { position: relative; display: inline-flex; }
-.airo-tooltip-bubble { position: fixed; transform: translateX(-50%) translateY(calc(-100% - 5px)); z-index: 10001; padding: 8px 12px; background: rgb(26, 26, 26); color: white; font-size: 13px; font-weight: 500; font-family: system-ui, sans-serif; border-radius: 8px; white-space: nowrap; pointer-events: none; animation: 0.15s ease-out 0s 1 normal none running airoTooltipFadeInUp; }
-.airo-tooltip-bubble[data-exiting] { animation: airoTooltipFadeOut var(--tooltip-exit-duration, 0.12s) ease-in forwards; }
-.airo-tooltip-arrow { position: absolute; left: var(--airo-tooltip-arrow-left, 50%); bottom: -6px; transform: translateX(-50%); width: 0px; height: 0px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid rgb(26, 26, 26); }
-@keyframes airoTooltipFadeInUp { 
-  0% { opacity: 0; transform: translateX(-50%) translateY(calc(-100% + 8px)); }
-  100% { opacity: 1; transform: translateX(-50%) translateY(calc(-100% - 5px)); }
-}
-@keyframes airoTooltipFadeOut { 
-  0% { opacity: 1; }
-  100% { opacity: 0; }
-}
-@keyframes editBarFadeIn { 
-  0% { opacity: 0; scale: 0.92; }
-  100% { opacity: 1; scale: 1; }
-}
-@keyframes claude-pulse { 
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-#claude-agent-glow-border-inner { animation: 2s ease-in-out 0s infinite normal none running claude-pulse; }
-@media (prefers-reduced-motion: reduce) {
-  #claude-agent-glow-border-inner { animation: auto ease 0s 1 normal none running none; }
-}
 
 
 html.js .rv{opacity:0;transform:translateY(24px);transition:opacity .55s ease-out,transform .55s ease-out}
