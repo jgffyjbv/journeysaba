@@ -8,20 +8,23 @@ document.documentElement.classList.add('js');
      content must still appear — a rect check on scroll cannot silently break. */
   var pending = [].slice.call(document.querySelectorAll('.rv'));
   var ticking = false;
+  var firstPass = true; // above-the-fold content reveals near-instantly; scroll reveals keep the slower stagger
   function revealCheck() {
     ticking = false;
     if (!pending.length) return;
     var vh = window.innerHeight || document.documentElement.clientHeight;
+    var base = firstPass ? 0 : 110, step = firstPass ? 45 : 90;
     var batch = 0;
     pending = pending.filter(function (el) {
       var r = el.getBoundingClientRect();
       if (r.top < vh * 0.94 && r.bottom > 0) {
-        (function (e, d) { setTimeout(function () { e.classList.add('rv-in'); }, d); })(el, 110 + (batch % 6) * 90);
+        (function (e, d) { setTimeout(function () { e.classList.add('rv-in'); }, d); })(el, base + (batch % 6) * step);
         batch++;
         return false;
       }
       return true;
     });
+    firstPass = false;
   }
   function onScroll() {
     if (!ticking) { ticking = true; (window.requestAnimationFrame || setTimeout)(revealCheck); }

@@ -1022,7 +1022,7 @@ html { scroll-behavior: smooth; }
 [data-slot="popover-content"] .\[\[data-slot\=popover-content\]_\&\]\:bg-transparent { background-color: transparent; }
 
 
-html.js .rv{opacity:0;transform:translateY(24px);transition:opacity .55s ease-out,transform .55s ease-out}
+html.js .rv{opacity:0;transform:translateY(16px);transition:opacity .38s ease-out,transform .38s ease-out}
 html.js .rv.rv-in{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){html.js .rv{opacity:1;transform:none;transition:none}}
 @keyframes lsbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-11px) scale(1.12)}}
