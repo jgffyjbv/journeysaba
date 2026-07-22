@@ -8,6 +8,7 @@ const ALLOWED_ORIGINS = [
   'https://jgffyjbv.github.io',
   'https://journeysaba.org',
   'https://www.journeysaba.org',
+  'https://journeysaba.avrumy95.workers.dev',
 ];
 
 const SYSTEM_PROMPT = `You are the friendly virtual assistant on the Journeys ABA Therapy website (New Jersey).
