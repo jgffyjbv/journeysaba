@@ -18,107 +18,296 @@
 <link rel="icon" href="images/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
-<link rel="stylesheet" href="styles.css">
-<script defer src="site.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Winky+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="home.css">
+<style>
+  .page-hero .updated { margin: 14px auto 0; font-size: .92rem; color: rgba(9, 78, 86, .6); }
+  .legal-card { background: #fff; border-radius: 24px; padding: clamp(28px, 5vw, 56px); box-shadow: 0 18px 44px rgba(23, 113, 124, .09); }
+  .legal-card .prose h2:first-of-type { margin-top: 0; }
+</style>
 </head>
 <body>
-<div id="app"><div class="min-h-screen bg-background flex flex-col">
-<header class="sticky top-0 z-50 bg-white shadow-md"><div class="container mx-auto px-4"><div class="flex h-32 items-center justify-between"><a class="flex items-center shrink-0" href="index.html"><img alt="Journeys ABA logo" class="h-24 w-auto object-contain shrink-0" src="images/assets-journeys-logo-transparent.png"></a><nav class="hidden md:flex items-center gap-1"><a class="px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-primary hover:bg-primary/10 hover:text-primary" href="index.html">Home</a><a class="px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-primary hover:bg-primary/10 hover:text-primary" href="about.html">About Us</a><a class="px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-primary hover:bg-primary/10 hover:text-primary" href="services.html">Services</a><a class="px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-primary hover:bg-primary/10 hover:text-primary" href="storybook.html">Storybook</a><a class="px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-primary hover:bg-primary/10 hover:text-primary" href="resources.html">Parent Resources</a><a class="px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-primary hover:bg-primary/10 hover:text-primary" href="careers.html">Careers</a><a class="px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 text-primary hover:bg-primary/10 hover:text-primary" href="contact.html">Contact Us</a><a class="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-accent text-foreground text-sm font-extrabold hover:opacity-90 transition-all shadow-md" href="tel:+17323052619" aria-label="Call Journeys ABA at (732) 305-2619"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span class="hidden lg:block">(732) 305-2619</span></a></nav><div class="flex items-center gap-2 md:hidden"><a class="inline-flex items-center justify-center p-2 rounded-full bg-accent text-foreground shadow-sm hover:opacity-90 transition-all" href="tel:+17323052619" aria-label="Call Journeys ABA at (732) 305-2619"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a><button class="md:hidden p-2 hover:bg-primary/10 rounded-full transition-colors text-primary" aria-label="Toggle menu"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button></div></div></div></header>
-<main class="flex-1">
-<section class="bg-primary text-white py-16 md:py-20">
-<div class="container mx-auto px-4">
-<span class="inline-block bg-white/10 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider">Legal</span>
-<h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4">Privacy Policy</h1>
-<p class="text-white/80 text-base md:text-lg max-w-2xl">Your family's trust matters to us. This policy explains what information we collect through our website and how we protect it.</p>
-<p class="text-white/60 text-sm mt-4">Last updated: July 2026</p>
-</div>
-</section>
-<section class="bg-white py-16">
-<div class="container mx-auto px-4 max-w-3xl">
-<div class="flex flex-col gap-10 text-foreground/80 text-base leading-relaxed">
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">Who We Are</h2>
-<p>Journeys ABA ("we," "us," or "our") provides Applied Behavior Analysis (ABA) therapy services for children with autism and their families in New Jersey. This Privacy Policy describes how we collect, use, and safeguard information submitted through our website, journeysaba.org (the "Site"). By using the Site, you agree to the practices described below.</p>
-</div>
+  <!-- 1. Top bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span>Proudly Serving New Jersey</span>
+      <a href="tel:+17323052619" aria-label="Call Journeys ABA at (732) 305-2619">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        Call Us: (732) 305-2619
+      </a>
+    </div>
+  </div>
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">Information We Collect</h2>
-<p class="mb-3">When you request a free consultation or contact us through the Site, we may collect the information you choose to provide, including:</p>
-<ul class="list-disc pl-6 flex flex-col gap-2">
-<li>Your name, email address, and phone number</li>
-<li>Your child's age</li>
-<li>Diagnosis information you choose to share (for example, whether your child has an autism diagnosis)</li>
-<li>Your insurance provider</li>
-<li>Any additional details you include in your message</li>
-</ul>
-<p class="mt-3">We also collect limited technical information automatically, as described in the Cookies and Analytics section below.</p>
-</div>
+  <!-- 2. Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="logo" href="index.html" aria-label="Journeys ABA — Home">
+        <img src="images/assets-journeys-logo-transparent.png" alt="Journeys ABA logo — Your Child's Journey. Together.">
+      </a>
+      <nav class="nav" id="siteNav" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="about.html">About Us</a>
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="storybook.html">Storybook</a>
+        <a class="nav-link" href="resources.html">Parent Resources</a>
+        <a class="nav-link" href="careers.html">Careers</a>
+        <a class="btn btn--nav-contact" href="contact.html">Contact</a>
+      </nav>
+      <a class="phone-pill" href="tel:+17323052619" aria-label="Call Journeys ABA at (732) 305-2619">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span class="phone-num">(732) 305-2619</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Toggle menu">
+        <svg class="icon-menu" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+        <svg class="icon-close" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+      </button>
+    </div>
+  </header>
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">How We Use Your Information</h2>
-<p class="mb-3">We use the information you submit only for the purposes for which it was provided, including to:</p>
-<ul class="list-disc pl-6 flex flex-col gap-2">
-<li>Respond to your inquiries and questions</li>
-<li>Schedule and prepare for consultations</li>
-<li>Verify insurance eligibility and discuss coverage options with you</li>
-<li>Communicate with you about our services</li>
-<li>Improve the Site and the experience we offer families</li>
-</ul>
-</div>
+  <main>
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">Health Information and Confidentiality</h2>
-<p>We understand that information about your child's health and development is deeply personal. Any health-related information you share with us — through the Site, by phone, or during services — is treated as confidential. Once your family becomes a client, health information collected in connection with our services is protected in accordance with applicable federal and state privacy laws, including the Health Insurance Portability and Accountability Act (HIPAA) where it applies. We limit access to such information to team members who need it to serve your family, and we maintain administrative, technical, and physical safeguards designed to protect it.</p>
-<p class="mt-3">Please note that standard website contact forms and email are not intended for detailed medical records. We encourage you to share only the information needed to begin a conversation; sensitive clinical details can be discussed securely once we connect.</p>
-</div>
+    <!-- 3. Page hero -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="eyebrow reveal">Legal</span>
+        <h1 class="reveal" style="--d:.05s">Privacy Policy</h1>
+        <p class="lead reveal" style="--d:.1s">Your family's trust matters to us. This policy explains what information we collect through our website and how we protect it.</p>
+        <p class="updated reveal" style="--d:.15s">Last updated: July 2026</p>
+      </div>
+    </section>
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">We Do Not Sell Your Data</h2>
-<p>We do not sell, rent, or trade your personal information to third parties. We do not share your information for third-party marketing purposes. We may share information only with trusted service providers who help us operate the Site or our practice (such as scheduling or hosting providers), when required by law, or with your consent.</p>
-</div>
+    <!-- 4. Policy -->
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="legal-card reveal">
+          <div class="prose">
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">Cookies and Analytics</h2>
-<p>The Site may use cookies and similar technologies to keep the Site functioning properly and to help us understand, in aggregate, how visitors use our pages — for example, which pages are visited most often. Analytics information is collected in a way that does not identify you personally. You can adjust your browser settings to refuse cookies, though some features of the Site may not function as intended without them.</p>
-</div>
+            <h2>Who We Are</h2>
+            <p>Journeys ABA ("we," "us," or "our") provides Applied Behavior Analysis (ABA) therapy services for children with autism and their families in New Jersey. This Privacy Policy describes how we collect, use, and safeguard information submitted through our website, journeysaba.org (the "Site"). By using the Site, you agree to the practices described below.</p>
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">Children's Privacy</h2>
-<p>Our services support children, but our Site is intended for use by parents, guardians, and other adults. We do not knowingly collect personal information directly from children under 13 through the Site. Information about a child (such as age or diagnosis) should be submitted only by a parent or legal guardian. If you believe a child has submitted personal information to us directly, please contact us and we will delete it promptly.</p>
-</div>
+            <h2>Information We Collect</h2>
+            <p>When you request a free consultation or contact us through the Site, we may collect the information you choose to provide, including:</p>
+            <ul>
+              <li>Your name, email address, and phone number</li>
+              <li>Your child's age</li>
+              <li>Diagnosis information you choose to share (for example, whether your child has an autism diagnosis)</li>
+              <li>Your insurance provider</li>
+              <li>Any additional details you include in your message</li>
+            </ul>
+            <p>We also collect limited technical information automatically, as described in the Cookies and Analytics section below.</p>
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">Data Security and Retention</h2>
-<p>We use reasonable safeguards to protect the information submitted through the Site. No method of transmission over the internet is completely secure, so we cannot guarantee absolute security, but we work to protect your information and retain it only as long as needed for the purposes described in this policy or as required by law.</p>
-</div>
+            <h2>How We Use Your Information</h2>
+            <p>We use the information you submit only for the purposes for which it was provided, including to:</p>
+            <ul>
+              <li>Respond to your inquiries and questions</li>
+              <li>Schedule and prepare for consultations</li>
+              <li>Verify insurance eligibility and discuss coverage options with you</li>
+              <li>Communicate with you about our services</li>
+              <li>Improve the Site and the experience we offer families</li>
+            </ul>
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">Your Choices</h2>
-<p>You may contact us at any time to ask what information we hold about you, request a correction, or ask us to delete information you submitted through the Site, subject to any legal record-keeping obligations that apply to us as a healthcare provider.</p>
-</div>
+            <h2>Health Information and Confidentiality</h2>
+            <p>We understand that information about your child's health and development is deeply personal. Any health-related information you share with us — through the Site, by phone, or during services — is treated as confidential. Once your family becomes a client, health information collected in connection with our services is protected in accordance with applicable federal and state privacy laws, including the Health Insurance Portability and Accountability Act (HIPAA) where it applies. We limit access to such information to team members who need it to serve your family, and we maintain administrative, technical, and physical safeguards designed to protect it.</p>
+            <p>Please note that standard website contact forms and email are not intended for detailed medical records. We encourage you to share only the information needed to begin a conversation; sensitive clinical details can be discussed securely once we connect.</p>
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">Changes to This Policy</h2>
-<p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. We encourage you to review this page periodically.</p>
-</div>
+            <h2>We Do Not Sell Your Data</h2>
+            <p>We do not sell, rent, or trade your personal information to third parties. We do not share your information for third-party marketing purposes. We may share information only with trusted service providers who help us operate the Site or our practice (such as scheduling or hosting providers), when required by law, or with your consent.</p>
 
-<div>
-<h2 class="text-2xl font-extrabold text-primary mb-3">Contact Us</h2>
-<p>If you have questions about this Privacy Policy or how we handle your information, please reach out:</p>
-<ul class="list-disc pl-6 flex flex-col gap-2 mt-3">
-<li>Email: <a class="text-primary font-semibold hover:underline" href="mailto:info@journeysaba.org">info@journeysaba.org</a></li>
-<li>Phone: <a class="text-primary font-semibold hover:underline" href="tel:7323052619">(732) 305-2619</a></li>
-<li>Or use our <a class="text-primary font-semibold hover:underline" href="contact.html">contact page</a></li>
-</ul>
-</div>
+            <h2>Cookies and Analytics</h2>
+            <p>The Site may use cookies and similar technologies to keep the Site functioning properly and to help us understand, in aggregate, how visitors use our pages — for example, which pages are visited most often. Analytics information is collected in a way that does not identify you personally. You can adjust your browser settings to refuse cookies, though some features of the Site may not function as intended without them.</p>
 
-</div>
-</div>
-</section>
-</main>
-<footer class="bg-primary text-white"><div class="ftr-tag py-3 px-4 text-center"><p class="text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart fill-white text-white shrink-0"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>Compassionate ABA Therapy — Serving Families Across New Jersey<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart fill-white text-white shrink-0"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg></p></div><div class="container mx-auto px-4 pb-10 ftr-main"><div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10"><div><div class="mb-4"><div class="inline-block bg-white rounded-xl px-3 py-2 shadow-md"><img alt="Journeys ABA logo" class="h-16 w-auto object-contain shrink-0" src="images/assets-journeys-logo-transparent.png"></div></div><p class="text-white/70 text-sm leading-relaxed">Compassionate, evidence-based ABA therapy helping every child reach their full potential — one step at a time.</p><div class="flex items-center gap-1 mt-4 text-accent text-sm font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart fill-accent text-accent"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg><span>journeysaba.org</span></div></div><div><h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Quick Links</h4><nav class="flex flex-col gap-2"><a class="text-white/70 hover:text-primary transition-colors text-sm" href="index.html">Home</a><a class="text-white/70 hover:text-primary transition-colors text-sm" href="about.html">About Us</a><a class="text-white/70 hover:text-primary transition-colors text-sm" href="services.html">Our Services</a><a class="text-white/70 hover:text-primary transition-colors text-sm" href="storybook.html">Storybook</a><a class="text-white/70 hover:text-primary transition-colors text-sm" href="resources.html">Resources</a><a class="text-white/70 hover:text-primary transition-colors text-sm" href="contact.html">Contact</a></nav></div><div><h4 class="font-bold text-white mb-4 text-sm uppercase tracking-wider">Get In Touch</h4><div class="flex flex-col gap-3"><a href="mailto:info@journeysaba.org" class="flex items-center gap-2 text-white/70 hover:text-primary transition-colors text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>info@journeysaba.org</a><a href="tel:7323052619" class="flex items-center gap-2 text-white/70 hover:text-primary transition-colors text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>(732) 305-2619</a><div class="flex items-center gap-2 text-white/70 text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Serving families in your area</div></div></div></div><div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-3"><p class="text-white/50 text-xs">© 2026 Journeys ABA. All rights reserved.</p><div class="flex gap-4"><a class="text-white/50 hover:text-white text-xs transition-colors" href="privacy.html">Privacy Policy</a><a class="text-white/50 hover:text-white text-xs transition-colors" href="terms.html">Terms of Use</a></div></div></div></footer>
-</div></div>
+            <h2>Children's Privacy</h2>
+            <p>Our services support children, but our Site is intended for use by parents, guardians, and other adults. We do not knowingly collect personal information directly from children under 13 through the Site. Information about a child (such as age or diagnosis) should be submitted only by a parent or legal guardian. If you believe a child has submitted personal information to us directly, please contact us and we will delete it promptly.</p>
+
+            <h2>Data Security and Retention</h2>
+            <p>We use reasonable safeguards to protect the information submitted through the Site. No method of transmission over the internet is completely secure, so we cannot guarantee absolute security, but we work to protect your information and retain it only as long as needed for the purposes described in this policy or as required by law.</p>
+
+            <h2>Your Choices</h2>
+            <p>You may contact us at any time to ask what information we hold about you, request a correction, or ask us to delete information you submitted through the Site, subject to any legal record-keeping obligations that apply to us as a healthcare provider.</p>
+
+            <h2>Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the top of this page. We encourage you to review this page periodically.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have questions about this Privacy Policy or how we handle your information, please reach out:</p>
+            <ul>
+              <li>Email: <a href="mailto:info@journeysaba.org">info@journeysaba.org</a></li>
+              <li>Phone: <a href="tel:7323052619">(732) 305-2619</a></li>
+              <li>Or use our <a href="contact.html">contact page</a></li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 5. Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo-chip">
+            <img src="images/assets-journeys-logo-transparent.png" alt="Journeys ABA logo — Your Child's Journey. Together.">
+          </div>
+          <p class="footer-tagline">Compassionate, evidence-based ABA therapy helping every child reach their full potential — one step at a time.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Our Services</a>
+            <a href="storybook.html">Storybook</a>
+            <a href="resources.html">Parent Resources</a>
+            <a href="careers.html">Careers</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+        </div>
+        <div>
+          <h4>Get In Touch</h4>
+          <div class="footer-contact">
+            <a href="mailto:info@journeysaba.org">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              info@journeysaba.org
+            </a>
+            <a href="tel:+17323052619">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              (732) 305-2619
+            </a>
+            <span class="footer-line">
+              <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Serving families in your area
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p style="margin:0;">© 2026 Journeys ABA. All rights reserved.</p>
+        <nav aria-label="Legal">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 6. Chat assistant (same widget as the rest of the site; site.js rebuilds the popup into the AI chat) -->
+  <div id="lsb-chat-pop" style="display:none;position:fixed;bottom:92px;right:24px;z-index:50;background:#fff;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,.18);padding:20px;width:280px;font-family:'Open Sans',sans-serif;"><h4 style="font-family:Nunito,sans-serif;font-weight:800;color:#17717C;font-size:17px;margin-bottom:10px;">Questions? We're here.</h4><a href="tel:+17323052619" style="display:block;padding:10px 12px;margin-bottom:8px;background:#EAF3F4;border-radius:10px;color:#17717C;font-weight:700;text-decoration:none;">&#128222; Call (732) 305-2619</a><a href="mailto:info@journeysaba.org" style="display:block;padding:10px 12px;margin-bottom:8px;background:#EAF3F4;border-radius:10px;color:#17717C;font-weight:700;text-decoration:none;">&#9993;&#65039; info@journeysaba.org</a><a href="contact.html" style="display:block;padding:10px 12px;background:#F26652;border-radius:10px;color:#fff;font-weight:700;text-decoration:none;text-align:center;">Request a Free Consultation</a></div>
+  <button id="lsb-chat" style="position:fixed;bottom:24px;right:24px;z-index:50;width:56px;height:56px;border-radius:9999px;background:#17717C;color:#fff;border:0;cursor:pointer;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;" aria-label="Contact us"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></button>
+
+  <script>
+    (function () {
+      // Mobile menu toggle
+      var header = document.getElementById('siteHeader');
+      var toggle = document.getElementById('menuToggle');
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var open = header.classList.toggle('menu-open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      // Fade-up on scroll
+      var items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        items.forEach(function (el) { io.observe(el); });
+      } else {
+        items.forEach(function (el) { el.classList.add('is-in'); });
+      }
+    })();
+  </script>
+
+  <script>
+    /* Chat bubble -> AI assistant (OpenAI via Cloudflare Worker proxy).
+       Mirrors the chat init in site.js — site.js itself is not loaded here because
+       its mobile-menu code would duplicate this page's own menu toggle. */
+    (function () {
+      var chat = document.getElementById('lsb-chat');
+      if (!chat) return;
+      var pop = document.getElementById('lsb-chat-pop');
+      var CHAT_API = 'https://journeysaba-chat.avrumy95.workers.dev';
+      var history = []; // {role, content} pairs sent to the assistant
+      var busy = false;
+
+      pop.style.width = 'min(340px, calc(100vw - 32px))';
+      pop.style.padding = '0';
+      pop.style.overflow = 'hidden';
+      pop.innerHTML =
+        '<div style="background:#17717C;color:#fff;padding:14px 18px;">' +
+          '<div style="font-family:Nunito,sans-serif;font-weight:800;font-size:16px;">Journeys ABA Assistant</div>' +
+          '<div style="font-size:12px;opacity:.85;">Ask about ABA therapy, insurance, or getting started</div>' +
+        '</div>' +
+        '<div id="lsb-chat-msgs" style="height:300px;overflow-y:auto;padding:14px;background:#FBFDF9;display:flex;flex-direction:column;gap:8px;"></div>' +
+        '<form id="lsb-chat-form" style="display:flex;gap:8px;padding:10px;border-top:1px solid #D1E3E5;background:#fff;">' +
+          '<input id="lsb-chat-in" type="text" placeholder="Type your question&hellip;" autocomplete="off" maxlength="600" ' +
+            'style="flex:1;border:1.5px solid #BFD9DC;border-radius:10px;padding:9px 12px;font-family:\'Open Sans\',sans-serif;font-size:14px;outline-color:#F26652;" />' +
+          '<button type="submit" aria-label="Send" style="background:#F26652;color:#fff;border:0;border-radius:10px;width:42px;cursor:pointer;font-size:16px;">&#10148;</button>' +
+        '</form>' +
+        '<div style="padding:7px 12px;background:#fff;border-top:1px solid #F3F0FF;text-align:center;font-size:12px;">' +
+          'Prefer to talk? <a href="tel:+17323052619" style="color:#F26652;font-weight:700;text-decoration:none;">(732) 305-2619</a>' +
+        '</div>';
+
+      var msgsEl = pop.querySelector('#lsb-chat-msgs');
+      var formEl = pop.querySelector('#lsb-chat-form');
+      var inEl = pop.querySelector('#lsb-chat-in');
+
+      function addMsg(text, who) {
+        var b = document.createElement('div');
+        b.style.cssText = who === 'user'
+          ? 'align-self:flex-end;background:#F26652;color:#fff;border-radius:14px 14px 4px 14px;padding:9px 13px;max-width:85%;font-size:14px;line-height:1.45;font-family:\'Open Sans\',sans-serif;white-space:pre-wrap;'
+          : 'align-self:flex-start;background:#fff;color:#333;border:1px solid #D1E3E5;border-radius:14px 14px 14px 4px;padding:9px 13px;max-width:85%;font-size:14px;line-height:1.45;font-family:\'Open Sans\',sans-serif;white-space:pre-wrap;';
+        b.textContent = text;
+        msgsEl.appendChild(b);
+        msgsEl.scrollTop = msgsEl.scrollHeight;
+        return b;
+      }
+
+      addMsg('Hi! 👋 I’m the Journeys ABA assistant. Ask me anything about ABA therapy, our services, insurance, or how to get started!', 'bot');
+
+      formEl.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var q = inEl.value.replace(/^\s+|\s+$/g, '');
+        if (!q || busy) return;
+        inEl.value = '';
+        addMsg(q, 'user');
+        history.push({ role: 'user', content: q });
+        busy = true;
+        var typing = addMsg('• • •', 'bot');
+        typing.style.opacity = '.55';
+        fetch(CHAT_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: history.slice(-10) }),
+        }).then(function (r) { return r.json(); }).then(function (j) {
+          var reply = (j && j.reply) || 'I’m having trouble right now — please call us at (732) 305-2619!';
+          typing.style.opacity = '1';
+          typing.textContent = reply;
+          history.push({ role: 'assistant', content: reply });
+          msgsEl.scrollTop = msgsEl.scrollHeight;
+        }).catch(function () {
+          typing.style.opacity = '1';
+          typing.textContent = 'I’m having trouble connecting — please call us at (732) 305-2619 or use the form on our Contact page!';
+        }).then(function () { busy = false; });
+      });
+
+      chat.addEventListener('click', function () {
+        var open = pop.style.display === 'none';
+        pop.style.display = open ? 'block' : 'none';
+        if (open) inEl.focus();
+      });
+    })();
+  </script>
+
 </body>
 </html>
