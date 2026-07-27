@@ -4,20 +4,23 @@
    ============================================================ */
 
 :root {
+  /* Brand palette — sampled straight from the Journeys ABA logo:
+     purple #3B127A, gold #FBB515. Bright gold is a FILL colour only;
+     gold text on light backgrounds uses --gold-ink so it stays readable. */
   --cream: #FCF8E6;
   --card: #FFFFFF;
-  --card-tint: #FEFBF1;
-  --ink: #094E56;
-  --teal: #17717C;
-  --teal-deep: #0F5F6A;
-  --coral: #F26652;
-  --coral-deep: #E2503B;
-  --green: #AECF74;
-  --lavender: #D3C1DE;
-  --pale: #D1E3E5;
-  --shadow-card: 0 6px 22px rgba(9, 78, 86, .07);
-  --shadow-soft: 0 16px 44px rgba(9, 78, 86, .10);
-  --shadow-lift: 0 26px 60px rgba(9, 78, 86, .16);
+  --card-tint: #FDFAF0;
+  --ink: #2D1B54;
+  --purple: #3B127A;
+  --purple-deep: #2A0B5C;
+  --gold: #FBB515;
+  --gold-deep: #E09C00;
+  --gold-ink: #9A6600;
+  --lilac: #D9C8F2;
+  --pale: #E4D9F7;
+  --shadow-card: 0 6px 22px rgba(45, 27, 84, .07);
+  --shadow-soft: 0 16px 44px rgba(45, 27, 84, .10);
+  --shadow-lift: 0 26px 60px rgba(45, 27, 84, .16);
   --radius-card: 24px;
   --radius-img: 30px;
   --font-head: "Winky Sans", "Trebuchet MS", sans-serif;
@@ -38,12 +41,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 img { max-width: 100%; display: block; }
-a { color: var(--teal); }
+a { color: var(--purple); }
 
 h1, h2, h3, h4 {
   font-family: var(--font-head);
   font-weight: 700;
-  color: var(--teal);
+  color: var(--purple);
   line-height: 1.14;
   margin: 0 0 .5em;
   letter-spacing: -0.01em;
@@ -63,13 +66,29 @@ p { margin: 0 0 1em; }
   font-weight: 600;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--coral);
+  color: var(--gold-ink);
   margin-bottom: 14px;
 }
-.eyebrow--teal { color: var(--teal); }
+.eyebrow--purple { color: var(--purple); }
 
-.two-tone .line-teal { color: var(--teal); display: block; }
-.two-tone .line-coral { color: var(--coral); display: block; }
+.two-tone .line-purple { color: var(--purple); display: block; }
+.two-tone .line-gold { display: block; }
+
+/* Display type in the logo's own treatment: bright gold letters carrying a
+   purple outline. Gold on cream is only 1.7:1 on its own — the stroke is what
+   makes it legible, exactly as it does in the wordmark. */
+.two-tone .line-gold,
+.value-row .vnum,
+.aspire-list li.aspire-final {
+  color: var(--gold);
+  -webkit-text-stroke: 2px var(--purple);
+  paint-order: stroke fill;
+}
+@supports not (-webkit-text-stroke: 2px #000) {
+  .two-tone .line-gold,
+  .value-row .vnum,
+  .aspire-list li.aspire-final { color: var(--gold-ink); }
+}
 
 .btn {
   display: inline-flex;
@@ -92,11 +111,11 @@ p { margin: 0 0 1em; }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
 
-.btn--teal { background: var(--teal); color: #fff; box-shadow: 0 10px 24px rgba(23, 113, 124, .28); }
-.btn--teal:hover { background: var(--teal-deep); color: #fff; }
+.btn--purple { background: var(--purple); color: #fff; box-shadow: 0 10px 24px rgba(59, 18, 122, .28); }
+.btn--purple:hover { background: var(--purple-deep); color: #fff; }
 
-.btn--coral { background: var(--coral); color: #fff; box-shadow: 0 10px 24px rgba(242, 102, 82, .32); }
-.btn--coral:hover { background: var(--coral-deep); color: #fff; }
+.btn--gold { background: var(--gold); color: var(--purple); box-shadow: 0 10px 24px rgba(224, 156, 0, .34); }
+.btn--gold:hover { background: var(--gold-deep); color: var(--purple); }
 
 .btn--outline-white { border-color: rgba(255, 255, 255, .65); color: #fff; background: transparent; }
 .btn--outline-white:hover { background: rgba(255, 255, 255, .12); color: #fff; }
@@ -107,17 +126,17 @@ p { margin: 0 0 1em; }
   gap: 8px;
   font-weight: 700;
   font-size: 15px;
-  color: var(--teal);
+  color: var(--purple);
   text-decoration: none;
   border-bottom: 2px solid transparent;
   transition: color .2s ease, gap .2s ease;
 }
-.link-arrow:hover { color: var(--coral); gap: 12px; }
+.link-arrow:hover { color: var(--gold-ink); gap: 12px; }
 
 .section { padding: 92px 0; }
 .section-head { max-width: 720px; margin: 0 auto 52px; text-align: center; }
 .section-head h2 { font-size: clamp(1.9rem, 3.2vw, 2.6rem); }
-.section-head .lead { font-size: 1.08rem; color: rgba(9, 78, 86, .82); margin: 0; }
+.section-head .lead { font-size: 1.08rem; color: rgba(45, 27, 84, .82); margin: 0; }
 
 /* ---------- Reveal on scroll ---------- */
 .reveal {
@@ -132,7 +151,7 @@ p { margin: 0 0 1em; }
 }
 
 /* ---------- Top bar ---------- */
-.topbar { background: var(--teal); color: #fff; }
+.topbar { background: var(--purple); color: #fff; }
 .topbar-inner {
   display: flex;
   align-items: center;
@@ -146,7 +165,7 @@ p { margin: 0 0 1em; }
   text-transform: uppercase;
 }
 .topbar a { color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
-.topbar a:hover { color: var(--green); }
+.topbar a:hover { color: var(--gold); }
 .topbar svg { flex: none; }
 
 /* ---------- Header ---------- */
@@ -157,7 +176,7 @@ p { margin: 0 0 1em; }
   background: rgba(252, 248, 230, .93);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(9, 78, 86, .09);
+  border-bottom: 1px solid rgba(45, 27, 84, .09);
 }
 .header-inner {
   display: flex;
@@ -181,43 +200,43 @@ p { margin: 0 0 1em; }
   transition: color .2s ease, background-color .2s ease;
   white-space: nowrap;
 }
-.nav-link:hover { color: var(--teal); background: rgba(23, 113, 124, .08); }
-.nav-link.is-active { color: var(--teal); background: rgba(23, 113, 124, .1); }
+.nav-link:hover { color: var(--purple); background: rgba(59, 18, 122, .08); }
+.nav-link.is-active { color: var(--purple); background: rgba(59, 18, 122, .1); }
 
 .btn--nav-contact {
   margin-left: 10px;
   padding: 11px 24px;
   font-size: 12px;
-  border-color: var(--teal);
-  color: var(--teal);
+  border-color: var(--purple);
+  color: var(--purple);
   background: transparent;
 }
-.btn--nav-contact:hover { background: var(--teal); color: #fff; }
+.btn--nav-contact:hover { background: var(--purple); color: #fff; }
 
 .phone-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-left: 8px;
-  background: var(--coral);
-  color: #fff;
+  background: var(--gold);
+  color: var(--purple);
   border-radius: 999px;
   padding: 11px 18px;
   font-size: 13.5px;
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 8px 18px rgba(242, 102, 82, .3);
+  box-shadow: 0 8px 18px rgba(224, 156, 0, .34);
   transition: background-color .2s ease, transform .2s ease;
 }
-.phone-pill:hover { background: var(--coral-deep); transform: translateY(-1px); }
+.phone-pill:hover { background: var(--gold-deep); transform: translateY(-1px); }
 .phone-pill svg { flex: none; }
 
 .menu-toggle {
   display: none;
   border: 0;
-  background: rgba(23, 113, 124, .08);
-  color: var(--teal);
+  background: rgba(59, 18, 122, .08);
+  color: var(--purple);
   width: 44px;
   height: 44px;
   border-radius: 12px;
@@ -225,7 +244,7 @@ p { margin: 0 0 1em; }
   justify-content: center;
   cursor: pointer;
 }
-.menu-toggle:hover { background: rgba(23, 113, 124, .16); }
+.menu-toggle:hover { background: rgba(59, 18, 122, .16); }
 .menu-toggle .icon-close { display: none; }
 .site-header.menu-open .menu-toggle .icon-menu { display: none; }
 .site-header.menu-open .menu-toggle .icon-close { display: block; }
@@ -258,7 +277,7 @@ p { margin: 0 0 1em; }
 .hero-lead {
   font-size: 1.13rem;
   line-height: 1.75;
-  color: rgba(9, 78, 86, .85);
+  color: rgba(45, 27, 84, .85);
   max-width: 33rem;
   margin-bottom: 30px;
 }
@@ -283,8 +302,8 @@ p { margin: 0 0 1em; }
   color: var(--ink);
   box-shadow: var(--shadow-card);
 }
-.chip svg { flex: none; color: var(--coral); }
-.chip--green svg { color: #7FA845; }
+.chip svg { flex: none; color: var(--gold-ink); }
+.chip--gold svg { color: var(--purple); }
 
 
 /* ---------- What is ABA ---------- */
@@ -298,10 +317,10 @@ p { margin: 0 0 1em; }
   border-radius: var(--radius-card);
   padding: 40px 38px;
   box-shadow: var(--shadow-card);
-  border: 1px solid rgba(9, 78, 86, .05);
+  border: 1px solid rgba(45, 27, 84, .05);
 }
 .card h3 { font-size: 1.45rem; margin-bottom: 14px; }
-.card p { color: rgba(9, 78, 86, .85); font-size: .99rem; margin: 0; }
+.card p { color: rgba(45, 27, 84, .85); font-size: .99rem; margin: 0; }
 .card p + p { margin-top: .9em; }
 .card-icon {
   width: 52px;
@@ -311,13 +330,13 @@ p { margin: 0 0 1em; }
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  color: var(--teal);
+  color: var(--purple);
 }
-.card-icon--pale { background: rgba(209, 227, 229, .7); }
-.card-icon--green { background: rgba(174, 207, 116, .35); }
+.card-icon--pale { background: rgba(228, 217, 247, .7); }
+.card-icon--butter { background: rgba(251, 181, 21, .35); }
 
 /* ---------- Values ---------- */
-.values { background: var(--card-tint); border-block: 1px solid rgba(9, 78, 86, .05); }
+.values { background: var(--card-tint); border-block: 1px solid rgba(45, 27, 84, .05); }
 .values .section-head h2 { font-size: clamp(1.9rem, 3.2vw, 2.55rem); }
 .values-list {
   max-width: 780px;
@@ -338,10 +357,9 @@ p { margin: 0 0 1em; }
   font-weight: 700;
   font-size: 3rem;
   line-height: 1;
-  color: var(--coral);
 }
 .value-row h3 { font-size: 1.5rem; margin-bottom: 6px; }
-.value-row p { font-size: 1.02rem; line-height: 1.7; color: rgba(9, 78, 86, .82); margin: 0; }
+.value-row p { font-size: 1.02rem; line-height: 1.7; color: rgba(45, 27, 84, .82); margin: 0; }
 
 /* ---------- Aspire ---------- */
 .aspire { background: var(--card-tint); }
@@ -358,10 +376,10 @@ p { margin: 0 0 1em; }
   font-family: var(--font-head);
   font-weight: 600;
   font-size: clamp(1.3rem, 2.4vw, 1.75rem);
-  color: var(--teal);
+  color: var(--purple);
 }
 .aspire-list li:nth-child(even) { color: var(--ink); }
-.aspire-list li.aspire-final { color: var(--coral); font-size: clamp(1.7rem, 3vw, 2.3rem); margin-top: 8px; }
+.aspire-list li.aspire-final { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-top: 8px; }
 
 /* ---------- Services ---------- */
 .svc-row {
@@ -383,7 +401,7 @@ p { margin: 0 0 1em; }
 .svc-row--flip .svc-media { order: 2; }
 .svc-row--flip .svc-copy { order: 1; }
 .svc-copy h3 { font-size: clamp(1.5rem, 2.4vw, 1.85rem); margin-bottom: 14px; }
-.svc-copy p { color: rgba(9, 78, 86, .85); max-width: 32rem; }
+.svc-copy p { color: rgba(45, 27, 84, .85); max-width: 32rem; }
 .svc-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
 .svc-tags li {
   font-size: 12px;
@@ -393,9 +411,9 @@ p { margin: 0 0 1em; }
   padding: 6px 14px;
   color: var(--ink);
 }
-.tag--green { background: rgba(174, 207, 116, .32); }
-.tag--lavender { background: rgba(211, 193, 222, .42); }
-.tag--pale { background: rgba(209, 227, 229, .75); }
+.tag--butter { background: rgba(251, 181, 21, .32); }
+.tag--lilac { background: rgba(217, 200, 242, .42); }
+.tag--pale { background: rgba(228, 217, 247, .75); }
 
 /* ---------- Get started ---------- */
 .steps {
@@ -408,14 +426,14 @@ p { margin: 0 0 1em; }
   border-radius: var(--radius-card);
   padding: 32px 28px;
   box-shadow: var(--shadow-card);
-  border: 1px solid rgba(9, 78, 86, .05);
+  border: 1px solid rgba(45, 27, 84, .05);
 }
 .step-num {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--coral);
-  color: #fff;
+  background: var(--gold);
+  color: var(--purple);
   font-family: var(--font-head);
   font-weight: 700;
   font-size: 1.05rem;
@@ -423,23 +441,23 @@ p { margin: 0 0 1em; }
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
-  box-shadow: 0 6px 14px rgba(242, 102, 82, .3);
+  box-shadow: 0 6px 14px rgba(224, 156, 0, .35);
 }
 .step-card h3 { font-size: 1.16rem; margin-bottom: 8px; }
-.step-card p { font-size: .92rem; line-height: 1.62; color: rgba(9, 78, 86, .82); margin: 0; }
+.step-card p { font-size: .92rem; line-height: 1.62; color: rgba(45, 27, 84, .82); margin: 0; }
 .insurance-note {
   text-align: center;
   margin: 44px auto 0;
   max-width: 620px;
   font-size: .98rem;
-  color: rgba(9, 78, 86, .85);
+  color: rgba(45, 27, 84, .85);
 }
-.insurance-note a { font-weight: 700; color: var(--teal); }
-.insurance-note a:hover { color: var(--coral); }
+.insurance-note a { font-weight: 700; color: var(--purple); }
+.insurance-note a:hover { color: var(--gold-ink); }
 
 /* ---------- Storybook teaser ---------- */
 .storybook-band {
-  background: rgba(211, 193, 222, .35);
+  background: rgba(217, 200, 242, .35);
   border-radius: 36px;
   padding: 64px 60px;
   display: grid;
@@ -448,7 +466,7 @@ p { margin: 0 0 1em; }
   align-items: center;
 }
 .storybook-band h2 { font-size: clamp(1.8rem, 3vw, 2.45rem); }
-.storybook-band p { color: rgba(9, 78, 86, .85); max-width: 30rem; margin-bottom: 28px; }
+.storybook-band p { color: rgba(45, 27, 84, .85); max-width: 30rem; margin-bottom: 28px; }
 .storybook-band img {
   width: 100%;
   aspect-ratio: 3 / 2;
@@ -460,7 +478,7 @@ p { margin: 0 0 1em; }
 
 /* ---------- Final CTA ---------- */
 .cta-band {
-  background: var(--teal);
+  background: var(--purple);
   border-radius: 36px;
   padding: 82px 56px;
   text-align: center;
@@ -473,7 +491,7 @@ p { margin: 0 0 1em; }
 
 /* ---------- Footer ---------- */
 .footer {
-  background: var(--teal);
+  background: var(--purple);
   color: #fff;
   margin-top: 96px;
   padding: 68px 0 30px;
@@ -520,7 +538,7 @@ p { margin: 0 0 1em; }
   gap: 10px;
 }
 .footer-contact .footer-line { color: rgba(252, 248, 230, .75); font-size: .95rem; }
-.footer-contact svg { flex: none; color: var(--green); }
+.footer-contact svg { flex: none; color: var(--gold); }
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, .16);
   padding-top: 24px;
@@ -560,8 +578,8 @@ p { margin: 0 0 1em; }
     align-items: stretch;
     gap: 4px;
     background: var(--cream);
-    border-bottom: 1px solid rgba(9, 78, 86, .12);
-    box-shadow: 0 24px 40px rgba(9, 78, 86, .12);
+    border-bottom: 1px solid rgba(45, 27, 84, .12);
+    box-shadow: 0 24px 40px rgba(45, 27, 84, .12);
     padding: 14px 24px 24px;
   }
   .site-header.menu-open .nav { display: flex; }
@@ -595,6 +613,7 @@ p { margin: 0 0 1em; }
 
   .logo img { height: 48px; }
   .hero h1 { font-size: 2.3rem; }
+  .two-tone .line-gold, .value-row .vnum, .aspire-list li.aspire-final { -webkit-text-stroke-width: 1.5px; }
   .hero-lead { font-size: 1.04rem; }
   .btn { padding: 15px 26px; width: 100%; }
   .topbar a, .phone-pill { width: auto; }
@@ -612,15 +631,15 @@ p { margin: 0 0 1em; }
 .page-hero { padding: 84px 0 54px; text-align: center; }
 .page-hero .eyebrow { justify-content: center; }
 .page-hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); max-width: 21ch; margin: 0 auto 16px; }
-.page-hero .lead { font-size: 1.1rem; line-height: 1.75; color: rgba(9, 78, 86, .85); max-width: 44rem; margin: 0 auto; }
+.page-hero .lead { font-size: 1.1rem; line-height: 1.75; color: rgba(45, 27, 84, .85); max-width: 44rem; margin: 0 auto; }
 
 .prose { max-width: 46rem; margin: 0 auto; }
 .prose h2 { font-size: 1.6rem; margin: 40px 0 14px; }
 .prose h3 { font-size: 1.2rem; margin: 28px 0 10px; }
-.prose p, .prose li { font-size: 1.02rem; line-height: 1.75; color: rgba(9, 78, 86, .88); }
+.prose p, .prose li { font-size: 1.02rem; line-height: 1.75; color: rgba(45, 27, 84, .88); }
 .prose ul, .prose ol { padding-left: 22px; margin: 12px 0; }
 .prose li { margin: 6px 0; }
-.prose a { color: var(--teal); font-weight: 600; }
+.prose a { color: var(--purple); font-weight: 600; }
 
 .form-card { background: var(--card); border-radius: var(--radius-card); box-shadow: var(--shadow-soft); padding: 38px 34px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -630,6 +649,6 @@ p { margin: 0 0 1em; }
   width: 100%; font-family: var(--font-body); font-size: 1rem; color: var(--ink);
   background: #fff; border: 1.5px solid var(--pale); border-radius: 12px; padding: 12px 14px;
 }
-.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--teal); outline-offset: 1px; border-color: var(--teal); }
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--purple); outline-offset: 1px; border-color: var(--purple); }
 .field textarea { min-height: 130px; resize: vertical; }
 @media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } .form-card { padding: 28px 20px; } }
