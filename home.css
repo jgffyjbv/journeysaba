@@ -4,20 +4,22 @@
    ============================================================ */
 
 :root {
-  /* Brand palette — sampled straight from the Journeys ABA logo:
-     purple #3B127A, gold #FBB515. Bright gold is a FILL colour only;
-     gold text on light backgrounds uses --gold-ink so it stays readable. */
+  /* Brand palette. Gold #FBB515 is the logo's own gold. The purple is #591490,
+     matched to viventium.com per the client — a lighter, less blue violet than
+     the logo's #3B127A. Bright gold is a FILL colour only; gold text on light
+     backgrounds uses --gold-ink so it stays readable. */
   --cream: #FCF8E6;
   --card: #FFFFFF;
   --card-tint: #FDFAF0;
   --ink: #2D1B54;
-  --purple: #3B127A;
-  --purple-deep: #2A0B5C;
+  --purple: #591490;
+  --purple-deep: #421070;
+  --purple-soft: #6A3E9B;
   --gold: #FBB515;
   --gold-deep: #E09C00;
   --gold-ink: #9A6600;
-  --lilac: #D9C8F2;
-  --pale: #E4D9F7;
+  --lilac: #D9C9EE;
+  --pale: #E9E2F4;
   --shadow-card: 0 6px 22px rgba(45, 27, 84, .07);
   --shadow-soft: 0 16px 44px rgba(45, 27, 84, .10);
   --shadow-lift: 0 26px 60px rgba(45, 27, 84, .16);
@@ -111,7 +113,7 @@ p { margin: 0 0 1em; }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
 
-.btn--purple { background: var(--purple); color: #fff; box-shadow: 0 10px 24px rgba(59, 18, 122, .28); }
+.btn--purple { background: var(--purple); color: #fff; box-shadow: 0 10px 24px rgba(89, 20, 144, .28); }
 .btn--purple:hover { background: var(--purple-deep); color: #fff; }
 
 .btn--gold { background: var(--gold); color: var(--purple); box-shadow: 0 10px 24px rgba(224, 156, 0, .34); }
@@ -200,8 +202,8 @@ p { margin: 0 0 1em; }
   transition: color .2s ease, background-color .2s ease;
   white-space: nowrap;
 }
-.nav-link:hover { color: var(--purple); background: rgba(59, 18, 122, .08); }
-.nav-link.is-active { color: var(--purple); background: rgba(59, 18, 122, .1); }
+.nav-link:hover { color: var(--purple); background: rgba(89, 20, 144, .08); }
+.nav-link.is-active { color: var(--purple); background: rgba(89, 20, 144, .1); }
 
 .btn--nav-contact {
   margin-left: 10px;
@@ -235,7 +237,7 @@ p { margin: 0 0 1em; }
 .menu-toggle {
   display: none;
   border: 0;
-  background: rgba(59, 18, 122, .08);
+  background: rgba(89, 20, 144, .08);
   color: var(--purple);
   width: 44px;
   height: 44px;
@@ -244,36 +246,89 @@ p { margin: 0 0 1em; }
   justify-content: center;
   cursor: pointer;
 }
-.menu-toggle:hover { background: rgba(59, 18, 122, .16); }
+.menu-toggle:hover { background: rgba(89, 20, 144, .16); }
 .menu-toggle .icon-close { display: none; }
 .site-header.menu-open .menu-toggle .icon-menu { display: none; }
 .site-header.menu-open .menu-toggle .icon-close { display: block; }
 
 /* ---------- Hero ---------- */
-.hero {
-  position: relative;
-  min-height: clamp(620px, 86vh, 860px);
-  display: flex;
+.hero { position: relative; padding: 34px 0 0; overflow: hidden; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.04fr .96fr;
+  gap: 60px;
   align-items: center;
-  overflow: hidden;
 }
-.hero-bg { position: absolute; inset: 0; }
-.hero-bg picture, .hero-bg img { width: 100%; height: 100%; display: block; }
-.hero-bg img { object-fit: cover; object-position: 82% center; }
-.hero-scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(90deg, var(--cream) 0%, rgba(252, 248, 230, .92) 30%, rgba(252, 248, 230, .62) 46%, rgba(252, 248, 230, .16) 62%, rgba(252, 248, 230, 0) 72%),
-    linear-gradient(180deg, rgba(252, 248, 230, .10), rgba(252, 248, 230, 0) 18%);
-}
-.hero .container { position: relative; }
-.hero-copy { max-width: 560px; padding: 104px 0 116px; }
+.hero-copy { max-width: 560px; padding: 34px 0 54px; }
 .hero h1 {
-  font-size: clamp(2.5rem, 4.6vw, 3.85rem);
+  font-size: clamp(2.4rem, 4.2vw, 3.55rem);
   margin-bottom: 22px;
-  text-shadow: 0 2px 20px rgba(252, 248, 230, .9), 0 0 44px rgba(252, 248, 230, .6);
 }
+
+/* Art panel: the photo sits on a stacked purple/gold petal, so the picture is
+   contained on one side instead of running the full width behind the words. */
+.hero-art { position: relative; padding: 24px 26px 26px 24px; }
+.hero-art img,
+.hero-blob {
+  /* Curve lives on the LEFT edge (as in the reference), so the right side —
+     where the people are — is never cut into. */
+  border-radius: 170px 30px 30px 170px;
+}
+.hero-art img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: 85% center;
+  box-shadow: var(--shadow-soft);
+}
+/* Each blob is the photo's own shape, nudged diagonally, so it reads as a slim
+   purple crescent above-right and a gold one below-left. */
+.hero-blob { position: absolute; z-index: 1; inset: 24px 26px 26px 24px; }
+.hero-blob--purple {
+  transform: translate(22px, -22px);
+  background: linear-gradient(150deg, var(--purple) 0%, var(--purple-soft) 100%);
+}
+.hero-blob--gold {
+  transform: translate(-22px, 24px);
+  background: var(--gold);
+}
+
+/* Trust strip tucked under the hero */
+.hero-features {
+  position: relative;
+  z-index: 3;
+  margin: 6px 0 0;
+  padding: 24px 8px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--card);
+  border: 1px solid rgba(45, 27, 84, .06);
+  border-radius: 26px;
+  box-shadow: var(--shadow-card);
+}
+.hero-features li { display: flex; align-items: flex-start; gap: 14px; padding: 6px 22px; }
+.hero-features li + li { border-left: 1px solid rgba(45, 27, 84, .09); }
+.hero-features .hf-ico {
+  flex: none;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--pale);
+  color: var(--purple);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-features b {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.25;
+  color: var(--purple);
+  margin-bottom: 4px;
+}
+.hero-features b + span { display: block; font-size: .87rem; line-height: 1.5; color: rgba(45, 27, 84, .75); }
 .hero-lead {
   font-size: 1.13rem;
   line-height: 1.75;
@@ -332,7 +387,7 @@ p { margin: 0 0 1em; }
   margin-bottom: 20px;
   color: var(--purple);
 }
-.card-icon--pale { background: rgba(228, 217, 247, .7); }
+.card-icon--pale { background: rgba(233, 226, 244, .7); }
 .card-icon--butter { background: rgba(251, 181, 21, .35); }
 
 /* ---------- Values ---------- */
@@ -412,8 +467,8 @@ p { margin: 0 0 1em; }
   color: var(--ink);
 }
 .tag--butter { background: rgba(251, 181, 21, .32); }
-.tag--lilac { background: rgba(217, 200, 242, .42); }
-.tag--pale { background: rgba(228, 217, 247, .75); }
+.tag--lilac { background: rgba(217, 201, 238, .42); }
+.tag--pale { background: rgba(233, 226, 244, .75); }
 
 /* ---------- Get started ---------- */
 .steps {
@@ -457,7 +512,7 @@ p { margin: 0 0 1em; }
 
 /* ---------- Storybook teaser ---------- */
 .storybook-band {
-  background: rgba(217, 200, 242, .35);
+  background: rgba(217, 201, 238, .35);
   border-radius: 36px;
   padding: 64px 60px;
   display: grid;
@@ -561,6 +616,10 @@ p { margin: 0 0 1em; }
   .nav-link { padding: 9px 10px; font-size: 13.5px; }
   .phone-pill .phone-num { display: none; }
   .steps { grid-template-columns: repeat(2, 1fr); }
+  .hero-grid { gap: 40px; }
+  .hero-features { grid-template-columns: repeat(2, 1fr); gap: 6px 0; }
+  .hero-features li:nth-child(3) { border-left: 0; }
+  .hero-features li:nth-child(n+3) { border-top: 1px solid rgba(45, 27, 84, .09); padding-top: 18px; }
 }
 
 @media (max-width: 900px) {
@@ -588,9 +647,13 @@ p { margin: 0 0 1em; }
   .phone-pill { margin-left: auto; }
   .phone-pill .phone-num { display: none; }
 
-  .hero-copy { padding: 76px 0 86px; }
-  .hero-scrim { background: rgba(252, 248, 230, .88); }
-      
+  .hero { padding-top: 18px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+  .hero-copy { max-width: none; padding: 18px 0 0; }
+  .hero-art { padding: 20px 22px 22px 20px; max-width: 620px; }
+  .hero-blob { inset: 20px 22px 22px 20px; }
+  .hero-art img, .hero-blob { border-radius: 130px 26px 26px 130px; }
+
   .aba-cards { grid-template-columns: 1fr; }
   .value-row { grid-template-columns: 46px 1fr; column-gap: 14px; }
   .value-row .vnum { font-size: 2.2rem; }
@@ -622,6 +685,14 @@ p { margin: 0 0 1em; }
   .cta-actions .btn { width: 100%; }
 
   .steps { grid-template-columns: 1fr; }
+  .hero-features { grid-template-columns: 1fr; padding: 18px 6px; }
+  .hero-features li + li { border-left: 0; }
+  .hero-features li:nth-child(n+2) { border-top: 1px solid rgba(45, 27, 84, .09); padding-top: 16px; }
+  .hero-art { padding: 15px 16px 16px 15px; }
+  .hero-blob { inset: 15px 16px 16px 15px; }
+  .hero-blob--purple { transform: translate(15px, -15px); }
+  .hero-blob--gold { transform: translate(-15px, 16px); }
+  .hero-art img, .hero-blob { border-radius: 90px 22px 22px 90px; }
   .card { padding: 30px 26px; }
   .storybook-band { padding: 36px 24px; border-radius: 26px; }
   .cta-band { border-radius: 26px; }
