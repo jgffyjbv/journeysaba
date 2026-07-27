@@ -246,14 +246,15 @@ p { margin: 0 0 1em; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, var(--cream) 0%, var(--cream) 38%, rgba(252, 248, 230, .95) 50%, rgba(252, 248, 230, .72) 63%, rgba(252, 248, 230, .22) 82%, rgba(252, 248, 230, 0) 100%),
-    linear-gradient(180deg, rgba(252, 248, 230, .28), rgba(252, 248, 230, 0) 32%);
+    linear-gradient(90deg, var(--cream) 0%, var(--cream) 34%, rgba(252, 248, 230, .93) 47%, rgba(252, 248, 230, .55) 58%, rgba(252, 248, 230, .10) 70%, rgba(252, 248, 230, 0) 80%),
+    linear-gradient(180deg, rgba(252, 248, 230, .12), rgba(252, 248, 230, 0) 22%);
 }
 .hero .container { position: relative; }
 .hero-copy { max-width: 620px; padding: 104px 0 116px; }
 .hero h1 {
   font-size: clamp(2.5rem, 4.6vw, 3.85rem);
   margin-bottom: 22px;
+  text-shadow: 0 2px 20px rgba(252, 248, 230, .9), 0 0 44px rgba(252, 248, 230, .6);
 }
 .hero-lead {
   font-size: 1.13rem;
