@@ -274,13 +274,15 @@ p { margin: 0 0 1em; }
      where the people are — is never cut into. */
   border-radius: 170px 30px 30px 170px;
 }
+.hero-art picture { display: block; position: relative; z-index: 2; }
 .hero-art img {
   position: relative;
   z-index: 2;
   width: 100%;
+  height: auto;               /* beats the width/height attrs so aspect-ratio governs */
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  object-position: 85% center;
+  object-position: center;
   box-shadow: var(--shadow-soft);
 }
 /* Each blob is the photo's own shape, nudged diagonally, so it reads as a slim
