@@ -608,3 +608,29 @@ p { margin: 0 0 1em; }
   .storybook-band { padding: 36px 24px; border-radius: 26px; }
   .cta-band { border-radius: 26px; }
 }
+
+/* ---------- Inner pages: shared components ---------- */
+.page-hero { padding: 84px 0 54px; text-align: center; }
+.page-hero .eyebrow { justify-content: center; }
+.page-hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); max-width: 21ch; margin: 0 auto 16px; }
+.page-hero .lead { font-size: 1.1rem; line-height: 1.75; color: rgba(9, 78, 86, .85); max-width: 44rem; margin: 0 auto; }
+
+.prose { max-width: 46rem; margin: 0 auto; }
+.prose h2 { font-size: 1.6rem; margin: 40px 0 14px; }
+.prose h3 { font-size: 1.2rem; margin: 28px 0 10px; }
+.prose p, .prose li { font-size: 1.02rem; line-height: 1.75; color: rgba(9, 78, 86, .88); }
+.prose ul, .prose ol { padding-left: 22px; margin: 12px 0; }
+.prose li { margin: 6px 0; }
+.prose a { color: var(--teal); font-weight: 600; }
+
+.form-card { background: var(--card); border-radius: var(--radius-card); box-shadow: var(--shadow-soft); padding: 38px 34px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.form-grid .full { grid-column: 1 / -1; }
+.field label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: 7px; color: var(--ink); }
+.field input, .field select, .field textarea {
+  width: 100%; font-family: var(--font-body); font-size: 1rem; color: var(--ink);
+  background: #fff; border: 1.5px solid var(--pale); border-radius: 12px; padding: 12px 14px;
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--teal); outline-offset: 1px; border-color: var(--teal); }
+.field textarea { min-height: 130px; resize: vertical; }
+@media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } .form-card { padding: 28px 20px; } }
