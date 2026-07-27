@@ -65,7 +65,14 @@
 
     <!-- 3. Hero -->
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="hero-bg" aria-hidden="true">
+        <picture>
+          <source srcset="images/home-hero.webp" type="image/webp">
+          <img src="images/home-hero.jpg" alt="" fetchpriority="high">
+        </picture>
+        <div class="hero-scrim"></div>
+      </div>
+      <div class="container">
         <div class="hero-copy">
           <span class="eyebrow reveal">In-Home ABA Therapy in New Jersey</span>
           <h1 class="two-tone reveal" style="--d:.05s">
@@ -89,12 +96,6 @@
               Compassionate ABA Therapy Backed by Clinical Excellence
             </span>
           </div>
-        </div>
-        <div class="hero-media reveal" style="--d:.15s">
-          <picture>
-            <source srcset="images/home-hero.webp" type="image/webp">
-            <img src="images/home-hero.jpg" alt="Jack and Jenna, the Journeys ABA storybook characters, learning together with their therapist" fetchpriority="high">
-          </picture>
         </div>
       </div>
     </section>
@@ -138,35 +139,34 @@
             <span class="line-coral">Progress that feels real.</span>
           </h2>
         </div>
-        <div class="values-grid">
-          <article class="value-card reveal">
-            <div class="value-num" aria-hidden="true">1</div>
+        <div class="values-list">
+          <div class="value-row reveal">
+            <div class="vnum" aria-hidden="true">1</div>
             <h3>Compassionate</h3>
             <p>We lead with empathy in every interaction — with children, families, and each other.</p>
-          </article>
-          <article class="value-card reveal" style="--d:.06s">
-            <div class="value-num" aria-hidden="true">2</div>
+          </div>
+          <div class="value-row reveal" style="--d:.06s">
+            <div class="vnum" aria-hidden="true">2</div>
             <h3>Collaborative</h3>
             <p>Parents and caregivers are essential partners in every child's therapy journey — we keep families informed and empowered throughout.</p>
-          </article>
-          <article class="value-card reveal" style="--d:.12s">
-            <div class="value-num" aria-hidden="true">3</div>
+          </div>
+          <div class="value-row reveal" style="--d:.12s">
+            <div class="vnum" aria-hidden="true">3</div>
             <h3>Play-Based</h3>
             <p>Compassionate, play-based therapy — because children learn best in settings where they feel safe and learning happens naturally.</p>
-          </article>
-          <article class="value-card reveal" style="--d:.18s">
-            <div class="value-num" aria-hidden="true">4</div>
+          </div>
+          <div class="value-row reveal" style="--d:.18s">
+            <div class="vnum" aria-hidden="true">4</div>
             <h3>Individualized</h3>
             <p>Every child receives a custom treatment plan designed by a BCBA around their unique needs and goals.</p>
-          </article>
-          <article class="value-card reveal" style="--d:.24s">
-            <div class="value-num" aria-hidden="true">5</div>
+          </div>
+          <div class="value-row reveal" style="--d:.24s">
+            <div class="vnum" aria-hidden="true">5</div>
             <h3>Meaningful Progress</h3>
             <p>Clear, measurable goals with transparent progress tracking. Every milestone — big or small — is worth celebrating.</p>
-          </article>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     <!-- 6. Services -->
     <section class="section">
@@ -234,6 +234,27 @@
     </section>
 
     <!-- 7. Get started -->
+    <section class="section aspire">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">What We Work Toward</span>
+          <h2 class="two-tone">
+            <span class="line-teal">Every small step</span>
+            <span class="line-coral">opens a bigger world.</span>
+          </h2>
+        </div>
+        <ul class="aspire-list reveal">
+          <li>To communicate their wants and needs.</li>
+          <li>To make friends and truly connect.</li>
+          <li>To handle big feelings with confidence.</li>
+          <li>To master everyday routines.</li>
+          <li>To be ready for the classroom.</li>
+          <li>To stay safe and feel secure.</li>
+          <li class="aspire-final">To thrive.</li>
+        </ul>
+      </div>
+    </section>
+
     <section class="section values">
       <div class="container">
         <div class="section-head reveal">
@@ -357,8 +378,8 @@
   </footer>
 
   <!-- 11. Chat assistant (same widget as the rest of the site; site.js rebuilds the popup into the AI chat) -->
-  <div id="lsb-chat-pop" style="display:none;position:fixed;bottom:92px;right:24px;z-index:50;background:#fff;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,.18);padding:20px;width:280px;font-family:'Open Sans',sans-serif;"><h4 style="font-family:Nunito,sans-serif;font-weight:800;color:#4C1D95;font-size:17px;margin-bottom:10px;">Questions? We're here.</h4><a href="tel:+17323052619" style="display:block;padding:10px 12px;margin-bottom:8px;background:#F5F3FF;border-radius:10px;color:#4C1D95;font-weight:700;text-decoration:none;">&#128222; Call (732) 305-2619</a><a href="mailto:info@journeysaba.org" style="display:block;padding:10px 12px;margin-bottom:8px;background:#F5F3FF;border-radius:10px;color:#4C1D95;font-weight:700;text-decoration:none;">&#9993;&#65039; info@journeysaba.org</a><a href="contact.html" style="display:block;padding:10px 12px;background:#7C3AED;border-radius:10px;color:#fff;font-weight:700;text-decoration:none;text-align:center;">Request a Free Consultation</a></div>
-  <button id="lsb-chat" style="position:fixed;bottom:24px;right:24px;z-index:50;width:56px;height:56px;border-radius:9999px;background:#4B2D8F;color:#fff;border:0;cursor:pointer;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;" aria-label="Contact us"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></button>
+  <div id="lsb-chat-pop" style="display:none;position:fixed;bottom:92px;right:24px;z-index:50;background:#fff;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,.18);padding:20px;width:280px;font-family:'Open Sans',sans-serif;"><h4 style="font-family:Nunito,sans-serif;font-weight:800;color:#17717C;font-size:17px;margin-bottom:10px;">Questions? We're here.</h4><a href="tel:+17323052619" style="display:block;padding:10px 12px;margin-bottom:8px;background:#EAF3F4;border-radius:10px;color:#17717C;font-weight:700;text-decoration:none;">&#128222; Call (732) 305-2619</a><a href="mailto:info@journeysaba.org" style="display:block;padding:10px 12px;margin-bottom:8px;background:#EAF3F4;border-radius:10px;color:#17717C;font-weight:700;text-decoration:none;">&#9993;&#65039; info@journeysaba.org</a><a href="contact.html" style="display:block;padding:10px 12px;background:#F26652;border-radius:10px;color:#fff;font-weight:700;text-decoration:none;text-align:center;">Request a Free Consultation</a></div>
+  <button id="lsb-chat" style="position:fixed;bottom:24px;right:24px;z-index:50;width:56px;height:56px;border-radius:9999px;background:#17717C;color:#fff;border:0;cursor:pointer;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;" aria-label="Contact us"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></button>
 
   <script>
     (function () {
@@ -406,18 +427,18 @@
       pop.style.padding = '0';
       pop.style.overflow = 'hidden';
       pop.innerHTML =
-        '<div style="background:#4C1D95;color:#fff;padding:14px 18px;">' +
+        '<div style="background:#17717C;color:#fff;padding:14px 18px;">' +
           '<div style="font-family:Nunito,sans-serif;font-weight:800;font-size:16px;">Journeys ABA Assistant</div>' +
           '<div style="font-size:12px;opacity:.85;">Ask about ABA therapy, insurance, or getting started</div>' +
         '</div>' +
-        '<div id="lsb-chat-msgs" style="height:300px;overflow-y:auto;padding:14px;background:#FAF9FF;display:flex;flex-direction:column;gap:8px;"></div>' +
-        '<form id="lsb-chat-form" style="display:flex;gap:8px;padding:10px;border-top:1px solid #EDE9FE;background:#fff;">' +
+        '<div id="lsb-chat-msgs" style="height:300px;overflow-y:auto;padding:14px;background:#FBFDF9;display:flex;flex-direction:column;gap:8px;"></div>' +
+        '<form id="lsb-chat-form" style="display:flex;gap:8px;padding:10px;border-top:1px solid #D1E3E5;background:#fff;">' +
           '<input id="lsb-chat-in" type="text" placeholder="Type your question&hellip;" autocomplete="off" maxlength="600" ' +
-            'style="flex:1;border:1.5px solid #DDD6FE;border-radius:10px;padding:9px 12px;font-family:\'Open Sans\',sans-serif;font-size:14px;outline-color:#7C3AED;" />' +
-          '<button type="submit" aria-label="Send" style="background:#7C3AED;color:#fff;border:0;border-radius:10px;width:42px;cursor:pointer;font-size:16px;">&#10148;</button>' +
+            'style="flex:1;border:1.5px solid #BFD9DC;border-radius:10px;padding:9px 12px;font-family:\'Open Sans\',sans-serif;font-size:14px;outline-color:#F26652;" />' +
+          '<button type="submit" aria-label="Send" style="background:#F26652;color:#fff;border:0;border-radius:10px;width:42px;cursor:pointer;font-size:16px;">&#10148;</button>' +
         '</form>' +
         '<div style="padding:7px 12px;background:#fff;border-top:1px solid #F3F0FF;text-align:center;font-size:12px;">' +
-          'Prefer to talk? <a href="tel:+17323052619" style="color:#7C3AED;font-weight:700;text-decoration:none;">(732) 305-2619</a>' +
+          'Prefer to talk? <a href="tel:+17323052619" style="color:#F26652;font-weight:700;text-decoration:none;">(732) 305-2619</a>' +
         '</div>';
 
       var msgsEl = pop.querySelector('#lsb-chat-msgs');
@@ -427,8 +448,8 @@
       function addMsg(text, who) {
         var b = document.createElement('div');
         b.style.cssText = who === 'user'
-          ? 'align-self:flex-end;background:#7C3AED;color:#fff;border-radius:14px 14px 4px 14px;padding:9px 13px;max-width:85%;font-size:14px;line-height:1.45;font-family:\'Open Sans\',sans-serif;white-space:pre-wrap;'
-          : 'align-self:flex-start;background:#fff;color:#333;border:1px solid #EDE9FE;border-radius:14px 14px 14px 4px;padding:9px 13px;max-width:85%;font-size:14px;line-height:1.45;font-family:\'Open Sans\',sans-serif;white-space:pre-wrap;';
+          ? 'align-self:flex-end;background:#F26652;color:#fff;border-radius:14px 14px 4px 14px;padding:9px 13px;max-width:85%;font-size:14px;line-height:1.45;font-family:\'Open Sans\',sans-serif;white-space:pre-wrap;'
+          : 'align-self:flex-start;background:#fff;color:#333;border:1px solid #D1E3E5;border-radius:14px 14px 14px 4px;padding:9px 13px;max-width:85%;font-size:14px;line-height:1.45;font-family:\'Open Sans\',sans-serif;white-space:pre-wrap;';
         b.textContent = text;
         msgsEl.appendChild(b);
         msgsEl.scrollTop = msgsEl.scrollHeight;
