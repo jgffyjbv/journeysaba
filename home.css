@@ -76,21 +76,10 @@ p { margin: 0 0 1em; }
 .two-tone .line-purple { color: var(--purple); display: block; }
 .two-tone .line-gold { display: block; }
 
-/* Display type in the logo's own treatment: bright gold letters carrying a
-   purple outline. Gold on cream is only 1.7:1 on its own — the stroke is what
-   makes it legible, exactly as it does in the wordmark. */
+/* Flat gold display type, as drawn in the client's own brochure — no outline. */
 .two-tone .line-gold,
 .value-row .vnum,
-.aspire-list li.aspire-final {
-  color: var(--gold);
-  -webkit-text-stroke: 2px var(--purple);
-  paint-order: stroke fill;
-}
-@supports not (-webkit-text-stroke: 2px #000) {
-  .two-tone .line-gold,
-  .value-row .vnum,
-  .aspire-list li.aspire-final { color: var(--gold-ink); }
-}
+.aspire-list li.aspire-final { color: var(--gold); }
 
 .btn {
   display: inline-flex;
@@ -297,19 +286,73 @@ p { margin: 0 0 1em; }
   background: var(--gold);
 }
 
-/* Trust strip tucked under the hero */
+/* Kites drifting behind the hero — the motif from the client's brochure. */
+.hero-kite { position: absolute; z-index: 0; pointer-events: none; opacity: .9; }
+.hero-kite svg { width: 100%; height: auto; display: block; }
+.hero-kite--a { width: 76px; top: 26px; left: 1.5%; transform: rotate(-8deg); }
+.hero-kite--b { width: 62px; top: 8px; right: 30%; transform: rotate(12deg); }
+/* Gold kite riding on the purple foot, as in the brochure's bottom corner. */
+.foot-kite {
+  position: absolute;
+  z-index: 2;
+  width: 74px;
+  right: 3.5%;
+  bottom: 6px;
+  transform: rotate(9deg);
+  pointer-events: none;
+}
+.foot-kite svg { width: 100%; height: auto; display: block; }
+
+/* Curved purple foot closing the hero, with the thin gold arc above it. */
+.hero-foot { position: relative; margin-top: 46px; background: var(--purple); }
+.hero-foot-curve {
+  display: block;
+  width: 100%;
+  height: 92px;
+  margin-bottom: -1px;
+  position: relative;
+  z-index: 1;
+}
+.hero-foot-inner { position: relative; z-index: 2; padding: 10px 24px 46px; }
+
+.hero-badge-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 34px 0 0;
+  text-align: left;
+}
+.hero-badge {
+  flex: none;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-badge-text {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: #fff;
+}
+
+/* Trust strip, sitting on the purple foot */
 .hero-features {
   position: relative;
   z-index: 3;
-  margin: 6px 0 0;
+  margin: 0;
   padding: 24px 8px;
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   background: var(--card);
-  border: 1px solid rgba(45, 27, 84, .06);
   border-radius: 26px;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 18px 42px rgba(18, 5, 38, .30);
 }
 .hero-features li { display: flex; align-items: flex-start; gap: 14px; padding: 6px 22px; }
 .hero-features li + li { border-left: 1px solid rgba(45, 27, 84, .09); }
@@ -650,6 +693,7 @@ p { margin: 0 0 1em; }
   .phone-pill .phone-num { display: none; }
 
   .hero { padding-top: 18px; }
+  .hero-kite { display: none; }   /* too tight beside the headline on small screens */
   .hero-grid { grid-template-columns: 1fr; gap: 34px; }
   .hero-copy { max-width: none; padding: 18px 0 0; }
   .hero-art { padding: 20px 22px 22px 20px; max-width: 620px; }
@@ -678,7 +722,6 @@ p { margin: 0 0 1em; }
 
   .logo img { height: 48px; }
   .hero h1 { font-size: 2.3rem; }
-  .two-tone .line-gold, .value-row .vnum, .aspire-list li.aspire-final { -webkit-text-stroke-width: 1.5px; }
   .hero-lead { font-size: 1.04rem; }
   .btn { padding: 15px 26px; width: 100%; }
   .topbar a, .phone-pill { width: auto; }
@@ -690,6 +733,11 @@ p { margin: 0 0 1em; }
   .hero-features { grid-template-columns: 1fr; padding: 18px 6px; }
   .hero-features li + li { border-left: 0; }
   .hero-features li:nth-child(n+2) { border-top: 1px solid rgba(45, 27, 84, .09); padding-top: 16px; }
+  .hero-badge { width: 44px; height: 44px; }
+  .hero-badge-text { font-size: 11.5px; letter-spacing: .12em; }
+  .hero-badge-line { gap: 12px; margin-top: 26px; }
+  .foot-kite { width: 54px; right: 5%; }
+  .hero-foot-curve { height: 62px; }
   .hero-art { padding: 15px 16px 16px 15px; }
   .hero-blob { inset: 15px 16px 16px 15px; }
   .hero-blob--purple { transform: translate(15px, -15px); }
