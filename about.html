@@ -35,11 +35,77 @@
     .check-list { list-style: none; margin: 0 0 24px; padding: 0; display: flex; flex-direction: column; gap: 11px; }
     .check-list li { display: flex; align-items: flex-start; gap: 10px; font-size: .99rem; font-weight: 500; color: rgba(45, 27, 84, .88); }
     .check-list svg { flex: none; margin-top: 4px; color: var(--purple); }
+
+    /* Clinical lead bio */
+    .section--bio { background: var(--card-tint); border-block: 1px solid rgba(45, 27, 84, .05); }
+    .bio-card {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 46px;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--card);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(45, 27, 84, .05);
+      padding: 40px;
+    }
+    .bio-media { position: relative; }
+    .bio-media::after {           /* soft gold corner, echoing the brand */
+      content: "";
+      position: absolute;
+      right: -12px; bottom: -12px;
+      width: 58%; height: 42%;
+      border-radius: 0 0 24px 0;
+      border-right: 5px solid var(--gold);
+      border-bottom: 5px solid var(--gold);
+      pointer-events: none;
+    }
+    .bio-media img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+    .bio-copy h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); margin: 0 0 2px; }
+    .bio-creds {
+      display: block;
+      font-family: var(--font-body);
+      font-size: .95rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      color: rgba(45, 27, 84, .62);
+      margin-top: 6px;
+    }
+    .bio-role {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: var(--gold-ink);
+      margin: 14px 0 18px;
+      padding-top: 14px;
+      border-top: 2px solid var(--pale);
+      display: inline-block;
+    }
+    .bio-copy p:not(.bio-role) { font-size: 1rem; line-height: 1.75; color: rgba(45, 27, 84, .85); }
+    .bio-copy p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 860px) {
+      .bio-card { grid-template-columns: 1fr; gap: 30px; padding: 28px 24px; }
+      .bio-media { max-width: 320px; margin-inline: auto; }
+    }
     @media (max-width: 700px) {
       .about-hero-media img { aspect-ratio: 16 / 11; }
     }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"About Journeys ABA — Our Mission & Team","url":"https://journeysaba.org/about.html","description":"Learn about Journeys ABA's mission, our compassionate team of BCBAs, and our evidence-based approach to ABA therapy for children and families."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Sarah Powell","honorificSuffix":"M.Ed., BCBA, LBA","jobTitle":"Clinical Lead","image":"https://journeysaba.org/images/sarah-powell.jpg","worksFor":{"@type":"MedicalBusiness","name":"Journeys ABA","url":"https://journeysaba.org/"},"hasCredential":[{"@type":"EducationalOccupationalCredential","credentialCategory":"Board Certified Behavior Analyst (BCBA)"},{"@type":"EducationalOccupationalCredential","credentialCategory":"Licensed Behavior Analyst (LBA)"},{"@type":"EducationalOccupationalCredential","credentialCategory":"M.Ed."}],"knowsAbout":["Applied Behavior Analysis","Autism spectrum disorder","In-home ABA therapy","Clinical supervision"]}</script>
 </head>
 <body>
 
@@ -152,6 +218,31 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
               Family-First — Always
             </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5b. Clinical lead -->
+    <section class="section section--bio">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Clinical Leadership</span>
+          <h2>Meet Our Clinical Lead</h2>
+        </div>
+        <div class="bio-card reveal" style="--d:.1s">
+          <div class="bio-media">
+            <picture>
+              <source srcset="images/sarah-powell.webp" type="image/webp">
+              <img src="images/sarah-powell.jpg" alt="Sarah Powell, M.Ed., BCBA, LBA — Clinical Lead at Journeys ABA" loading="lazy" width="900" height="1200">
+            </picture>
+          </div>
+          <div class="bio-copy">
+            <h3>Sarah Powell<span class="bio-creds">M.Ed., BCBA, LBA</span></h3>
+            <p class="bio-role">Clinical Lead</p>
+            <p>Sarah Powell is a Board Certified Behavior Analyst (BCBA) and Licensed Behavior Analyst with more than 10 years of experience as a BCBA and over 15 years serving individuals with autism and their families. As Clinical Lead at Journeys ABA, she provides clinical oversight to ensure families throughout New Jersey receive compassionate, individualized, and evidence-based ABA therapy.</p>
+            <p>Sarah believes the best ABA therapy is rooted in science but built on relationships, compassion, and fun. While she is passionate about clinical excellence, she also emphasizes the importance of communication, collaboration, and trust, because meaningful progress happens when families and clinicians work together.</p>
+            <p>With extensive experience in in-home ABA therapy, clinical leadership, staff mentorship, quality assurance, and behavior intervention, Sarah is committed to helping every child reach their fullest potential while supporting families' journey every step of the way.</p>
           </div>
         </div>
       </div>
