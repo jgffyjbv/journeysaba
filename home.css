@@ -256,34 +256,17 @@ p { margin: 0 0 1em; }
 
 /* Art panel: the photo sits on a stacked purple/gold petal, so the picture is
    contained on one side instead of running the full width behind the words. */
-.hero-art { position: relative; padding: 24px 26px 26px 24px; }
-.hero-art img,
-.hero-blob {
-  /* Curve lives on the LEFT edge (as in the reference), so the right side —
-     where the people are — is never cut into. */
-  border-radius: 170px 30px 30px 170px;
-}
-.hero-art picture { display: block; position: relative; z-index: 2; }
+/* Cut-out photo standing straight on the cream — no frame, no shapes, per the
+   client's mockup. WebP carries the alpha; the JPEG fallback is pre-composited
+   onto --cream so it looks identical. */
+.hero-art { position: relative; }
+.hero-art picture { display: block; }
 .hero-art img {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  height: auto;               /* beats the width/height attrs so aspect-ratio governs */
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: center;
-  box-shadow: var(--shadow-soft);
-}
-/* Each blob is the photo's own shape, nudged diagonally, so it reads as a slim
-   purple crescent above-right and a gold one below-left. */
-.hero-blob { position: absolute; z-index: 1; inset: 24px 26px 26px 24px; }
-.hero-blob--purple {
-  transform: translate(22px, -22px);
-  background: linear-gradient(150deg, var(--purple) 0%, var(--purple-soft) 100%);
-}
-.hero-blob--gold {
-  transform: translate(-22px, 24px);
-  background: var(--gold);
+  width: 112%;
+  max-width: none;
+  margin-left: -8%;
+  height: auto;
+  filter: drop-shadow(0 26px 26px rgba(45, 27, 84, .13));
 }
 
 /* Kites drifting behind the hero — the motif from the client's brochure. */
@@ -696,9 +679,8 @@ p { margin: 0 0 1em; }
   .hero-kite { display: none; }   /* too tight beside the headline on small screens */
   .hero-grid { grid-template-columns: 1fr; gap: 34px; }
   .hero-copy { max-width: none; padding: 18px 0 0; }
-  .hero-art { padding: 20px 22px 22px 20px; max-width: 620px; }
-  .hero-blob { inset: 20px 22px 22px 20px; }
-  .hero-art img, .hero-blob { border-radius: 130px 26px 26px 130px; }
+  .hero-art { max-width: 560px; margin-inline: auto; }
+  .hero-art img { width: 100%; margin-left: 0; }
 
   .aba-cards { grid-template-columns: 1fr; }
   .value-row { grid-template-columns: 46px 1fr; column-gap: 14px; }
@@ -733,16 +715,13 @@ p { margin: 0 0 1em; }
   .hero-features { grid-template-columns: 1fr; padding: 18px 6px; }
   .hero-features li + li { border-left: 0; }
   .hero-features li:nth-child(n+2) { border-top: 1px solid rgba(45, 27, 84, .09); padding-top: 16px; }
+  .hero-art { max-width: none; }
   .hero-badge { width: 44px; height: 44px; }
   .hero-badge-text { font-size: 11.5px; letter-spacing: .12em; }
   .hero-badge-line { gap: 12px; margin-top: 26px; }
   .foot-kite { width: 54px; right: 5%; }
   .hero-foot-curve { height: 62px; }
-  .hero-art { padding: 15px 16px 16px 15px; }
-  .hero-blob { inset: 15px 16px 16px 15px; }
-  .hero-blob--purple { transform: translate(15px, -15px); }
-  .hero-blob--gold { transform: translate(-15px, 16px); }
-  .hero-art img, .hero-blob { border-radius: 90px 22px 22px 90px; }
+
   .card { padding: 30px 26px; }
   .storybook-band { padding: 36px 24px; border-radius: 26px; }
   .cta-band { border-radius: 26px; }
