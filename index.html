@@ -525,6 +525,16 @@
         pop.style.display = open ? 'block' : 'none';
         if (open) inEl.focus();
       });
+
+      // Nudge: pop open by itself a few seconds in, once per visit.
+      try {
+        if (!sessionStorage.getItem('lsbChatNudged')) {
+          setTimeout(function () {
+            sessionStorage.setItem('lsbChatNudged', '1');
+            if (pop.style.display === 'none') pop.style.display = 'block';
+          }, 4500);
+        }
+      } catch (e) {} // private mode: no sessionStorage, just skip the nudge
     })();
   </script>
 

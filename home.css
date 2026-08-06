@@ -103,10 +103,10 @@ p { margin: 0 0 1em; }
 .btn:active { transform: translateY(0); }
 
 .btn--purple { background: var(--purple); color: #fff; box-shadow: 0 10px 24px rgba(89, 20, 144, .28); }
-.btn--purple:hover { background: var(--purple-deep); color: #fff; }
+.btn--purple:hover { background: var(--purple-deep); color: #fff; box-shadow: 0 16px 30px rgba(89, 20, 144, .34); }
 
 .btn--gold { background: var(--gold); color: var(--purple); box-shadow: 0 10px 24px rgba(224, 156, 0, .34); }
-.btn--gold:hover { background: var(--gold-deep); color: var(--purple); }
+.btn--gold:hover { background: var(--gold-deep); color: var(--purple); box-shadow: 0 16px 30px rgba(224, 156, 0, .4); }
 
 .btn--outline-white { border-color: rgba(255, 255, 255, .65); color: #fff; background: transparent; }
 .btn--outline-white:hover { background: rgba(255, 255, 255, .12); color: #fff; }
@@ -136,9 +136,27 @@ p { margin: 0 0 1em; }
   transition: opacity .7s ease var(--d, 0s), transform .7s ease var(--d, 0s);
 }
 .reveal.is-in { opacity: 1; transform: none; }
+
+/* Hover lift on the card-ish blocks. These all carry .reveal, so the reveal
+   transition is re-stated here to keep the stagger, and the lift itself rides
+   on `translate` so it can't fight the reveal's transform. */
+.card, .step-card, .value-row {
+  transition:
+    opacity .7s ease var(--d, 0s), transform .7s ease var(--d, 0s),
+    translate .35s ease, box-shadow .35s ease;
+}
+.card:hover, .step-card:hover {
+  translate: 0 -5px;
+  box-shadow: 0 22px 46px rgba(45, 27, 84, .14);
+}
+.value-row:hover { translate: 0 -3px; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .card, .step-card, .value-row { transition: none; }
+  .card:hover, .step-card:hover, .value-row:hover { translate: none; }
+  .hero-kite svg { animation: none; }
 }
 
 /* ---------- Top bar ---------- */
@@ -266,14 +284,29 @@ p { margin: 0 0 1em; }
   max-width: none;
   margin-left: -8%;
   height: auto;
-  filter: drop-shadow(0 26px 26px rgba(45, 27, 84, .13));
+  /* A hair of blur feathers the cut-out's alpha edge so it doesn't read as a
+     hard line on the cream, then a close contact shadow under two wider, softer
+     ones instead of the single offset band. */
+  filter:
+    blur(.35px)
+    drop-shadow(0 2px 3px rgba(45, 27, 84, .10))
+    drop-shadow(0 14px 24px rgba(45, 27, 84, .10))
+    drop-shadow(0 34px 54px rgba(45, 27, 84, .07));
 }
 
 /* Kites drifting behind the hero — the motif from the client's brochure. */
 .hero-kite { position: absolute; z-index: 0; pointer-events: none; opacity: .9; }
-.hero-kite svg { width: 100%; height: auto; display: block; }
+/* The drift sits on the svg so the wrapper keeps its resting rotation. */
+.hero-kite svg { width: 100%; height: auto; display: block; animation: kite-drift 9s ease-in-out infinite; }
 .hero-kite--a { width: 76px; top: 26px; left: 1.5%; transform: rotate(-8deg); }
 .hero-kite--b { width: 62px; top: 8px; right: 30%; transform: rotate(12deg); }
+.hero-kite--b svg { animation-duration: 11.5s; animation-delay: -3.5s; }
+@keyframes kite-drift {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  33%  { transform: translate(5px, -9px) rotate(2.5deg); }
+  66%  { transform: translate(-4px, -5px) rotate(-2deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
 /* Gold kite riding on the purple foot, as in the brochure's bottom corner. */
 .foot-kite {
   position: absolute;
