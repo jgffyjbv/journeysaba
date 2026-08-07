@@ -132,7 +132,7 @@ p { margin: 0 0 1em; }
 /* ---------- Reveal on scroll ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(34px);
   transition: opacity .7s ease var(--d, 0s), transform .7s ease var(--d, 0s);
 }
 .reveal.is-in { opacity: 1; transform: none; }
@@ -324,9 +324,22 @@ p { margin: 0 0 1em; }
 .hero-kite--b svg { animation-duration: 11.5s; animation-delay: -3.5s; }
 @keyframes kite-drift {
   0%   { transform: translate(0, 0) rotate(0deg); }
-  33%  { transform: translate(5px, -9px) rotate(2.5deg); }
-  66%  { transform: translate(-4px, -5px) rotate(-2deg); }
+  30%  { transform: translate(16px, -24px) rotate(4.5deg); }
+  55%  { transform: translate(-6px, -38px) rotate(-2deg); }
+  80%  { transform: translate(-14px, -12px) rotate(-4deg); }
   100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* A kite that sails right across the hero every half-minute. */
+.hero-kite--fly { width: 58px; top: 9%; left: -80px; opacity: 0; animation: kite-fly 34s linear 3s infinite; }
+@keyframes kite-fly {
+  0%   { transform: translate(0, 0) rotate(10deg); opacity: 0; }
+  4%   { opacity: .85; }
+  25%  { transform: translate(28vw, -26px) rotate(5deg); }
+  50%  { transform: translate(56vw, 14px) rotate(12deg); }
+  75%  { transform: translate(84vw, -20px) rotate(6deg); }
+  96%  { opacity: .85; }
+  100% { transform: translate(112vw, 2px) rotate(10deg); opacity: 0; }
 }
 /* Gold kite riding on the purple foot, as in the brochure's bottom corner. */
 .foot-kite {
@@ -492,6 +505,11 @@ p { margin: 0 0 1em; }
   column-gap: 20px;
   align-items: baseline;
 }
+.value-row.reveal.is-in .vnum { animation: num-pop .65s cubic-bezier(.34, 1.56, .64, 1) both; }
+@keyframes num-pop {
+  from { transform: scale(.3) rotate(-8deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0); opacity: 1; }
+}
 .value-row .vnum {
   grid-row: span 2;
   font-family: var(--font-head);
@@ -609,6 +627,11 @@ p { margin: 0 0 1em; }
 }
 .storybook-band h2 { font-size: clamp(1.8rem, 3vw, 2.45rem); }
 .storybook-band p { color: rgba(45, 27, 84, .85); max-width: 30rem; margin-bottom: 28px; }
+.storybook-band img { animation: gentle-bob 6.5s ease-in-out infinite; }
+@keyframes gentle-bob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-10px) rotate(.8deg); }
+}
 .storybook-band img {
   width: 100%;
   aspect-ratio: 3 / 2;
@@ -620,6 +643,8 @@ p { margin: 0 0 1em; }
 
 /* ---------- Final CTA ---------- */
 .cta-band {
+  position: relative;
+  overflow: hidden;
   background: var(--purple);
   border-radius: 36px;
   padding: 82px 56px;
@@ -859,4 +884,22 @@ p { margin: 0 0 1em; }
   #lsb-chat::before { animation: none; box-shadow: none; }
   #lsb-chat-pop.lsb-pop-in { animation: none; }
   .card:hover, .step-card:hover { transform: none; }
+}
+
+
+/* Small kite drifting inside the purple CTA band. */
+.cta-kite { position: absolute; width: 54px; right: 5%; top: 12%; opacity: .55; pointer-events: none; }
+.cta-kite svg { width: 100%; height: auto; animation: kite-drift 12s ease-in-out -4s infinite; }
+/* Kites on inner-page heroes (storybook). */
+.page-hero { position: relative; }
+.page-kite { position: absolute; pointer-events: none; opacity: .85; }
+.page-kite svg { width: 100%; height: auto; animation: kite-drift 10s ease-in-out infinite; }
+.page-kite--l { width: 64px; left: 5%; top: 18%; transform: rotate(-10deg); }
+.page-kite--r { width: 52px; right: 7%; top: 8%; transform: rotate(11deg); }
+.page-kite--r svg { animation-duration: 12.5s; animation-delay: -5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kite--fly, .cta-kite svg, .page-kite svg, .storybook-band img { animation: none; }
+  .hero-kite--fly { opacity: 0; }
+  .value-row.reveal.is-in .vnum { animation: none; }
 }

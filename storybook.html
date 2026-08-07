@@ -421,6 +421,8 @@ footer a:hover { color: hsl(41 100% 62%) !important; }
 
     <!-- Page hero -->
     <section class="page-hero">
+      <span class="page-kite page-kite--l" aria-hidden="true"><svg viewBox="0 0 120 235" fill="none"><path d="M60 4 92 42 60 80 28 42Z" fill="#FBB515"/><path d="M60 4v76M28 42h64" stroke="#591490" stroke-width="3" stroke-linecap="round"/><path d="M60 80c8 26-24 32-16 60s28 36 18 66" stroke="#591490" stroke-width="3" stroke-dasharray="1 11" stroke-linecap="round"/><path d="M46 112 60 119 46 126 42 119Z M74 112 60 119 74 126 78 119Z" fill="#FBB515"/></svg></span>
+      <span class="page-kite page-kite--r" aria-hidden="true"><svg viewBox="0 0 120 235" fill="none"><path d="M60 4 92 42 60 80 28 42Z" fill="#FBB515"/><path d="M60 4v76M28 42h64" stroke="#591490" stroke-width="3" stroke-linecap="round"/><path d="M60 80c8 26-24 32-16 60s28 36 18 66" stroke="#591490" stroke-width="3" stroke-dasharray="1 11" stroke-linecap="round"/><path d="M46 112 60 119 46 126 42 119Z M74 112 60 119 74 126 78 119Z" fill="#FBB515"/></svg></span>
       <div class="container">
         <span class="eyebrow reveal">Our Storybook</span>
         <h1 class="two-tone reveal" style="--d:.05s">
@@ -1118,6 +1120,64 @@ footer a:hover { color: hsl(41 100% 62%) !important; }
           }
         }, 6500);
       }
+    })();
+  </script>
+  <script>
+    /* Storybook page-turn sound: a soft paper swish synthesized with WebAudio
+       (no audio file, nothing to download). Plays only on the reader's own
+       tap — click/tap counts as a user gesture, so autoplay rules are happy.
+       Wired by delegation: the flipbook's own markup stays untouched. */
+    (function () {
+      var fb = document.getElementById('flipbook');
+      if (!fb) return;
+      var on = true;
+      try { on = localStorage.getItem('sbSoundOn') !== '0'; } catch (e) {}
+
+      /* toggle button above the book */
+      var t = document.createElement('button');
+      t.type = 'button';
+      t.id = 'sb-sound-toggle';
+      function label() {
+        t.textContent = on ? '\uD83D\uDD0A Page sounds: on' : '\uD83D\uDD07 Page sounds: off';
+        t.setAttribute('aria-pressed', on ? 'true' : 'false');
+      }
+      t.style.cssText = 'display:block;margin:0 auto 18px;border:2px solid #591490;background:#fff;color:#591490;' +
+        'border-radius:999px;padding:8px 20px;font:600 13px Inter,sans-serif;cursor:pointer;';
+      label();
+      t.addEventListener('click', function () {
+        on = !on; label();
+        try { localStorage.setItem('sbSoundOn', on ? '1' : '0'); } catch (e) {}
+        if (on) swish();                       /* audible confirmation */
+      });
+      fb.parentNode.insertBefore(t, fb);
+
+      var ctx = null;
+      function swish() {
+        try {
+          ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+          if (ctx.state === 'suspended') ctx.resume();
+          var dur = 0.22, sr = ctx.sampleRate;
+          var buf = ctx.createBuffer(1, Math.floor(sr * dur), sr);
+          var d = buf.getChannelData(0);
+          for (var i = 0; i < d.length; i++) {
+            var x = i / d.length;
+            d[i] = (Math.random() * 2 - 1) * Math.pow(1 - x, 1.6) * Math.sin(x * Math.PI);
+          }
+          var src = ctx.createBufferSource(); src.buffer = buf;
+          var f = ctx.createBiquadFilter();
+          f.type = 'bandpass'; f.Q.value = 0.9;
+          f.frequency.setValueAtTime(700, ctx.currentTime);
+          f.frequency.exponentialRampToValueAtTime(2600, ctx.currentTime + dur * 0.75);
+          var g = ctx.createGain(); g.gain.value = 0.22;
+          src.connect(f); f.connect(g); g.connect(ctx.destination);
+          src.start();
+        } catch (e) {}
+      }
+
+      document.addEventListener('click', function (e) {
+        if (!on) return;
+        if (e.target.closest && e.target.closest('.fb-prev, .fb-next, .fb-dot')) swish();
+      });
     })();
   </script>
 </body>
