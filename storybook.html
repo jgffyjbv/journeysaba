@@ -880,7 +880,7 @@ footer a:hover { color: hsl(41 100% 62%) !important; }
   </footer>
 
   <!-- 11. Chat assistant (same widget as the rest of the site; site.js rebuilds the popup into the AI chat) -->
-  <div id="lsb-chat-pop" style="display:none;position:fixed;bottom:92px;right:24px;z-index:50;background:#fff;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,.18);padding:20px;width:280px;font-family:'Open Sans',sans-serif;"><h4 style="font-family:Nunito,sans-serif;font-weight:800;color:#591490;font-size:17px;margin-bottom:10px;">Questions? We're here.</h4><a href="tel:+17323052619" style="display:block;padding:10px 12px;margin-bottom:8px;background:#F1EBF9;border-radius:10px;color:#591490;font-weight:700;text-decoration:none;">&#128222; Call (732) 305-2619</a><a href="mailto:info@journeysaba.org" style="display:block;padding:10px 12px;margin-bottom:8px;background:#F1EBF9;border-radius:10px;color:#591490;font-weight:700;text-decoration:none;">&#9993;&#65039; info@journeysaba.org</a><a href="contact.html" style="display:block;padding:10px 12px;background:#FBB515;border-radius:10px;color:#591490;font-weight:700;text-decoration:none;text-align:center;">Request a Free Consultation</a></div>
+  <div id="lsb-chat-pop" style="display:none;position:fixed;bottom:92px;right:24px;z-index:70;background:#fff;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,.18);padding:20px;width:280px;font-family:'Open Sans',sans-serif;"><h4 style="font-family:Nunito,sans-serif;font-weight:800;color:#591490;font-size:17px;margin-bottom:10px;">Questions? We're here.</h4><a href="tel:+17323052619" style="display:block;padding:10px 12px;margin-bottom:8px;background:#F1EBF9;border-radius:10px;color:#591490;font-weight:700;text-decoration:none;">&#128222; Call (732) 305-2619</a><a href="mailto:info@journeysaba.org" style="display:block;padding:10px 12px;margin-bottom:8px;background:#F1EBF9;border-radius:10px;color:#591490;font-weight:700;text-decoration:none;">&#9993;&#65039; info@journeysaba.org</a><a href="contact.html" style="display:block;padding:10px 12px;background:#FBB515;border-radius:10px;color:#591490;font-weight:700;text-decoration:none;text-align:center;">Request a Free Consultation</a></div>
   <button id="lsb-chat" style="position:fixed;bottom:24px;right:24px;z-index:50;width:56px;height:56px;border-radius:9999px;background:#591490;color:#fff;border:0;cursor:pointer;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;" aria-label="Contact us"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg></button>
 
   <script>
@@ -929,11 +929,12 @@ footer a:hover { color: hsl(41 100% 62%) !important; }
       pop.style.padding = '0';
       pop.style.overflow = 'hidden';
       pop.innerHTML =
-        '<div style="background:#591490;color:#fff;padding:14px 18px;">' +
+        '<div style="background:#591490;color:#fff;padding:14px 18px 14px 46px;position:relative;">' +
+        '<button id="lsb-chat-x" type="button" aria-label="Close chat" style="position:absolute;left:10px;top:14px;width:28px;height:28px;border:0;border-radius:8px;background:rgba(255,255,255,.16);color:#fff;font-size:14px;line-height:1;cursor:pointer;">&#10005;</button>' +
           '<div style="font-family:Nunito,sans-serif;font-weight:800;font-size:16px;">Journeys ABA Assistant</div>' +
           '<div style="font-size:12px;opacity:.85;">Ask about ABA therapy, insurance, or getting started</div>' +
         '</div>' +
-        '<div id="lsb-chat-msgs" style="height:300px;overflow-y:auto;padding:14px;background:#FAF7FE;display:flex;flex-direction:column;gap:8px;"></div>' +
+        '<div id="lsb-chat-msgs" style="height:clamp(140px, calc(100vh - 360px), 300px);overflow-y:auto;padding:14px;background:#FAF7FE;display:flex;flex-direction:column;gap:8px;"></div>' +
         '<form id="lsb-chat-form" style="display:flex;gap:8px;padding:10px;border-top:1px solid #E9E2F4;background:#fff;">' +
           '<input id="lsb-chat-in" type="text" placeholder="Type your question&hellip;" autocomplete="off" maxlength="600" ' +
             'style="flex:1;border:1.5px solid #DFD3F0;border-radius:10px;padding:9px 12px;font-family:\'Open Sans\',sans-serif;font-size:14px;outline-color:#591490;" />' +
@@ -943,6 +944,11 @@ footer a:hover { color: hsl(41 100% 62%) !important; }
           'Prefer to talk? <a href="tel:+17323052619" style="color:#9A6600;font-weight:700;text-decoration:none;">(732) 305-2619</a>' +
         '</div>';
 
+      var closeEl = pop.querySelector('#lsb-chat-x');
+      if (closeEl) closeEl.addEventListener('click', function (e) {
+        e.stopPropagation();
+        pop.style.display = 'none';
+      });
       var msgsEl = pop.querySelector('#lsb-chat-msgs');
       var formEl = pop.querySelector('#lsb-chat-form');
       var inEl = pop.querySelector('#lsb-chat-in');
