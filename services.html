@@ -566,5 +566,32 @@
     })();
   </script>
 
+  <script>
+    /* Chat attention: pulse + badge until seen; auto-open once per session. */
+    (function () {
+      var btn = document.getElementById('lsb-chat');
+      var pop = document.getElementById('lsb-chat-pop');
+      if (!btn || !pop) return;
+      var KEY = 'jabaChatSeen';
+      function markSeen() {
+        btn.classList.add('lsb-chat--seen');
+        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+      }
+      var seen = false;
+      try { seen = !!sessionStorage.getItem(KEY); } catch (e) {}
+      if (seen) { btn.classList.add('lsb-chat--seen'); }
+      btn.addEventListener('click', markSeen);
+      var isContact = /contact\.html/.test(location.pathname);
+      if (!seen && !isContact) {
+        setTimeout(function () {
+          if (pop.style.display === 'none') {
+            pop.classList.add('lsb-pop-in');
+            pop.style.display = 'block';   /* open WITHOUT focusing the input */
+            markSeen();
+          }
+        }, 6500);
+      }
+    })();
+  </script>
 </body>
 </html>

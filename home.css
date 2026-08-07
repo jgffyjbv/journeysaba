@@ -278,7 +278,28 @@ p { margin: 0 0 1em; }
    client's mockup. WebP carries the alpha; the JPEG fallback is pre-composited
    onto --cream so it looks identical. */
 .hero-art { position: relative; }
-.hero-art picture { display: block; }
+/* Soft lilac pool of light behind the figures so the cut-out melts into the
+   page instead of sitting on it. */
+.hero-art::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: -6% -10% 2% -14%;
+  background: radial-gradient(58% 52% at 52% 58%, rgba(217, 201, 238, .55) 0%, rgba(233, 226, 244, .28) 55%, rgba(252, 248, 230, 0) 78%);
+  pointer-events: none;
+}
+/* Grounding contact shadow under them. */
+.hero-art::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 4%; right: 10%;
+  bottom: -6px;
+  height: 44px;
+  background: radial-gradient(closest-side, rgba(45, 27, 84, .12), rgba(45, 27, 84, 0) 72%);
+  pointer-events: none;
+}
+.hero-art picture { display: block; position: relative; z-index: 1; }
 .hero-art img {
   width: 112%;
   max-width: none;
@@ -317,6 +338,7 @@ p { margin: 0 0 1em; }
   transform: rotate(9deg);
   pointer-events: none;
 }
+.foot-kite svg { animation: kite-drift 10s ease-in-out -2s infinite; }
 .foot-kite svg { width: 100%; height: auto; display: block; }
 
 /* Curved purple foot closing the hero, with the thin gold arc above it. */
@@ -379,7 +401,9 @@ p { margin: 0 0 1em; }
   background: var(--pale);
   color: var(--purple);
   display: flex; align-items: center; justify-content: center;
+  transition: transform .3s ease, background-color .3s ease;
 }
+.hero-features li:hover .hf-ico { transform: rotate(-8deg) scale(1.12); background: var(--gold); }
 .hero-features b {
   display: block;
   font-family: var(--font-head);
@@ -434,6 +458,7 @@ p { margin: 0 0 1em; }
   padding: 40px 38px;
   box-shadow: var(--shadow-card);
   border: 1px solid rgba(45, 27, 84, .05);
+
 }
 .card h3 { font-size: 1.45rem; margin-bottom: 14px; }
 .card p { color: rgba(45, 27, 84, .85); font-size: .99rem; margin: 0; }
@@ -543,6 +568,7 @@ p { margin: 0 0 1em; }
   padding: 32px 28px;
   box-shadow: var(--shadow-card);
   border: 1px solid rgba(45, 27, 84, .05);
+
 }
 .step-num {
   width: 44px;
@@ -785,3 +811,52 @@ p { margin: 0 0 1em; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--purple); outline-offset: 1px; border-color: var(--purple); }
 .field textarea { min-height: 130px; resize: vertical; }
 @media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } .form-card { padding: 28px 20px; } }
+
+
+/* ---------- Chat: pulse, badge, pop-in (button + popup are inline-styled in
+   the page, so these hook the ids; pseudo-elements still apply) ---------- */
+#lsb-chat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 0 rgba(89, 20, 144, .45);
+  animation: chat-pulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+#lsb-chat::after {                      /* unread dot */
+  content: "1";
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--purple);
+  font: 700 12px/22px var(--font-body);
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+#lsb-chat.lsb-chat--seen::before,
+#lsb-chat.lsb-chat--seen::after { display: none; }
+
+@keyframes chat-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(89, 20, 144, .45); }
+  70%  { box-shadow: 0 0 0 16px rgba(89, 20, 144, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(89, 20, 144, 0); }
+}
+
+#lsb-chat-pop.lsb-pop-in {
+  animation: chat-pop .38s cubic-bezier(.34, 1.4, .64, 1) both;
+  transform-origin: 92% 100%;
+}
+@keyframes chat-pop {
+  from { opacity: 0; transform: scale(.6) translateY(14px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-kite svg, .foot-kite svg { animation: none; }
+  #lsb-chat::before { animation: none; box-shadow: none; }
+  #lsb-chat-pop.lsb-pop-in { animation: none; }
+  .card:hover, .step-card:hover { transform: none; }
+}

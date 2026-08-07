@@ -95,8 +95,8 @@
 
         <div class="hero-art reveal" style="--d:.1s">
           <picture>
-            <source srcset="images/home-hero-cutout-v6.webp" type="image/webp">
-            <img src="images/home-hero-cutout-v6.jpg" alt="A Journeys ABA therapist and a young boy in a purple kite sweater smiling together beside a tower of purple and gold blocks" fetchpriority="high" width="1100" height="1117">
+            <source srcset="images/home-hero-cutout-v7.webp" type="image/webp">
+            <img src="images/home-hero-cutout-v7.jpg" alt="A Journeys ABA therapist and a young boy in a purple kite sweater smiling together beside a tower of purple and gold blocks" fetchpriority="high" width="1100" height="1117">
           </picture>
         </div>
         </div>
@@ -525,18 +525,35 @@
         pop.style.display = open ? 'block' : 'none';
         if (open) inEl.focus();
       });
-
-      // Nudge: pop open by itself a few seconds in, once per visit.
-      try {
-        if (!sessionStorage.getItem('lsbChatNudged')) {
-          setTimeout(function () {
-            sessionStorage.setItem('lsbChatNudged', '1');
-            if (pop.style.display === 'none') pop.style.display = 'block';
-          }, 4500);
-        }
-      } catch (e) {} // private mode: no sessionStorage, just skip the nudge
     })();
   </script>
 
+  <script>
+    /* Chat attention: pulse + badge until seen; auto-open once per session. */
+    (function () {
+      var btn = document.getElementById('lsb-chat');
+      var pop = document.getElementById('lsb-chat-pop');
+      if (!btn || !pop) return;
+      var KEY = 'jabaChatSeen';
+      function markSeen() {
+        btn.classList.add('lsb-chat--seen');
+        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+      }
+      var seen = false;
+      try { seen = !!sessionStorage.getItem(KEY); } catch (e) {}
+      if (seen) { btn.classList.add('lsb-chat--seen'); }
+      btn.addEventListener('click', markSeen);
+      var isContact = /contact\.html/.test(location.pathname);
+      if (!seen && !isContact) {
+        setTimeout(function () {
+          if (pop.style.display === 'none') {
+            pop.classList.add('lsb-pop-in');
+            pop.style.display = 'block';   /* open WITHOUT focusing the input */
+            markSeen();
+          }
+        }, 6500);
+      }
+    })();
+  </script>
 </body>
 </html>
