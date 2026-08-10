@@ -308,8 +308,10 @@ p { margin: 0 0 1em; }
   /* A hair of blur feathers the cut-out's alpha edge so it doesn't read as a
      hard line on the cream, then a close contact shadow under two wider, softer
      ones instead of the single offset band. */
+  /* NO blur() here: on 2-3x phone screens .35px CSS becomes a full device
+     pixel of Gaussian over the faces — edge softness is baked into the
+     image's alpha instead. */
   filter:
-    blur(.35px)
     drop-shadow(0 2px 3px rgba(45, 27, 84, .10))
     drop-shadow(0 14px 24px rgba(45, 27, 84, .10))
     drop-shadow(0 34px 54px rgba(45, 27, 84, .07));
