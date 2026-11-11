@@ -129,12 +129,8 @@
           <div class="form-card reveal">
             <h2>Request a Free Consultation</h2>
             <p class="form-intro">Fill out the form below and we'll reach out to schedule your free call.</p>
-            <form action="https://formsubmit.co/info@journeysaba.org" method="POST">
-              <input type="hidden" name="_subject" value="New consultation request — journeysaba.org">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_captcha" value="false">
+            <form action="https://bhwebs.com/jaba/submit" method="POST">
             <input type="text" name="_honey" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
-              <input type="hidden" name="_next" value="https://journeysaba.org/contact.html?sent=1">
               <div class="form-grid">
                 <div class="field">
                   <label for="name">Your Name <span class="req">*</span></label>
@@ -434,7 +430,7 @@
           ev.preventDefault();
           var btn = hf.querySelector('button');
           btn.disabled = true; btn.textContent = 'SENDING\u2026';
-          fetch('https://formsubmit.co/ajax/info@journeysaba.org', {
+          fetch('https://bhwebs.com/jaba/callback', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({

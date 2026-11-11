@@ -198,12 +198,8 @@
           <p class="lead">Fill out the form below and we'll be in touch soon.</p>
         </div>
         <div class="apply-wrap">
-          <form class="form-card reveal" action="https://formsubmit.co/info@journeysaba.org" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_subject" value="New job application — journeysaba.org">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
+          <form class="form-card reveal" action="https://bhwebs.com/jaba/careers" method="POST" enctype="multipart/form-data">
             <input type="text" name="_honey" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <input type="hidden" name="_next" value="https://journeysaba.org/careers.html?sent=1">
             <div class="form-grid">
               <div class="field full">
                 <label for="app-name">Full Name <span class="req">*</span></label>
@@ -414,7 +410,7 @@
           ev.preventDefault();
           var btn = hf.querySelector('button');
           btn.disabled = true; btn.textContent = 'SENDING\u2026';
-          fetch('https://formsubmit.co/ajax/info@journeysaba.org', {
+          fetch('https://bhwebs.com/jaba/callback', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
